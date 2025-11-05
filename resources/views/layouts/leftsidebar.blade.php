@@ -1,0 +1,49 @@
+<div id="kt_aside" class="aside" data-kt-drawer="true" data-kt-drawer-name="aside"
+    data-kt-drawer-activate="{default: true, lg: false}" data-kt-drawer-overlay="true"
+    data-kt-drawer-width="{default:'200px', '300px': '250px'}" data-kt-drawer-direction="start"
+    data-kt-drawer-toggle="#kt_aside_mobile_toggle">
+    <div class="aside-menu flex-column-fluid">
+        <div class="hover-scroll-overlay-y mx-3 my-5 my-lg-5" id="kt_aside_menu_wrapper" data-kt-scroll="true"
+            data-kt-scroll-height="auto"
+            data-kt-scroll-dependencies="{default: '#kt_aside_toolbar, #kt_aside_footer', lg: '#kt_header, #kt_aside_toolbar, #kt_aside_footer'}"
+            data-kt-scroll-wrappers="#kt_aside_menu" data-kt-scroll-offset="5px">
+            <div class="menu menu-column menu-title-gray-800 menu-state-title-primary menu-state-icon-primary menu-state-bullet-primary menu-arrow-gray-500"
+                id="#kt_aside_menu" data-kt-menu="true">
+                  <div data-kt-menu-trigger="click" class="menu-item here show menu-accordion">
+                       <div class="menu-item pt-5">
+                            {{-- <div class="menu-content">
+                                <span class="menu-heading fw-bold text-uppercase fs-7">Menu</span>
+                            </div> --}}
+                            {{-- <div class="menu-item">
+                                <a class="menu-link {{ request()->routeIs('#') ? ' active' : '' }}"
+                                    href="{{ route('#') }}">
+                                    <span class="menu-icon">
+                                        <i class="ki-duotone ki-element-11 fs-2">
+                                            <span class="path1"></span>
+                                            <span class="path2"></span>
+                                            <span class="path3"></span>
+                                            <span class="path4"></span>
+                                        </i>
+                                    </span>
+                                    <span class="menu-title fw-semibold">Dashboard</span>
+                                </a>
+                            </div> --}}
+                        </div>
+                  </div>
+            </div>
+        </div>
+    </div>
+    <div class="aside-footer flex-column-auto py-5" id="kt_aside_footer">
+        <a href="{{ route('logout') }}" class="btn btn-flex btn-custom btn-danger w-100"
+            onclick="event.preventDefault(); document.getElementById('logout-form').submit()">
+            <span class="btn-label">Log Out</span>
+            <i class="ki-duotone ki-exit-left ms-2 fs-2">
+                <span class="path1"></span>
+                <span class="path2"></span>
+            </i>
+        </a>
+        <form id="logout-form" action="{{ route('logout') }}" method="post">
+            @csrf
+        </form>
+    </div>
+</div>
