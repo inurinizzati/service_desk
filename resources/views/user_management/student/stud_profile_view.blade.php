@@ -1,8 +1,12 @@
+<!-- this page is for technician to view and edit their profile.
+There are some attribute that cannot be edited like user_ID, user_name, etc.
+Some are editable. at the bottom of the page there will be cancel button and update button -->
+
 @extends('layouts.app')
 
 @section('title', 'Student Profile View')
 
-@section('page-header',  'Senarai Penceramah')
+@section('page-header',  'Profile')
 
 
 @section('css_after')

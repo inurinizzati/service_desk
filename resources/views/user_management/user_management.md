@@ -4,7 +4,33 @@
 * Admin-only technician onboarding (create, invite email, resend invite)
 * Admin user management: create/edit/deactivate/reactivate/delete, role assignment, search/filter
 * Security: password hashing, rate limiting, verification/reset/invite tokens, audit logs
-* permissions:
-  - STUDENT: register, login/logout, manage own profile, reset/change password
-  - TECHNICIAN: login/logout, manage own profile/password; no self-registration
-  - ADMIN: user CRUD, roles, deactivate/reactivate, reset passwords, resend invites, audit log
+* Permissions:
+    - **STUDENT**: 
+        - Register using university email domain and student ID.
+        - Login/logout functionality.
+        - Manage own profile, including updating personal information.
+        - Reset/change password as needed.
+    - **TECHNICIAN**: 
+        - Login/logout functionality.
+        - Manage own profile and password.
+        - No self-registration allowed; must be onboarded by an admin.
+    - **ADMIN**: 
+        - Full user CRUD (Create, Read, Update, Delete) capabilities.
+        - Assign and manage roles for users.
+        - Deactivate/reactivate user accounts as necessary.
+        - Reset passwords for users.
+        - Resend invites to technicians.
+        - Maintain an audit log for tracking user activities and changes.
+    
+* Additional Pages to Create:
+    - **Student Registration Page**: For students to register with their university email and ID.
+    - **Profile Management Page**: For all roles to manage their profiles.
+    - **Admin Dashboard**: For admins to manage users, roles, and view audit logs.
+    - **Technician Onboarding Page**: For admins to onboard new technicians.
+
+* Security Measures:
+    - Implement password hashing for secure storage.
+    - Apply rate limiting to prevent brute force attacks.
+    - Use verification/reset/invite tokens for secure user actions.
+    - Maintain audit logs for accountability and tracking changes.
+
