@@ -21,6 +21,19 @@
         - Reset passwords for users.
         - Resend invites to technicians.
         - Maintain an audit log for tracking user activities and changes.
+
+*user attribute table:
+users
+- PK user_id
+- FK hostel_id -> hostels.hostel_id (nullable; students typically have a hostel)
+- name
+- email (unique)
+- password_hash
+- role {ADMIN, TECHNICIAN, STUDENT}
+- phone_num
+- status {ACTIVE, INACTIVE, INVITED}
+- email_verified_at (nullable)
+- created_at, updated_at
     
 * Additional Pages to Create:
     - **Student Registration Page**: For students to register with their university email and ID.

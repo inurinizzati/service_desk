@@ -17,7 +17,7 @@ Some are editable. at the bottom of the page there will be cancel button and upd
     <script src="{{ asset ('metronic/assets/plugins/custom/datatables/datatables.bundle.js')}}"></script>
     <script src="{{ asset ('metronic/js/datatable.js')}}"></script>
      <script>
-        $(document).on('click', '.hapus-data', function(e){
+        $(document).on('click', '.delete-data', function(e){
             e.preventDefault(); // Halang link daripada terus redirect
 
             Swal.fire({

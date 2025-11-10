@@ -24,7 +24,7 @@
         });
 
         // confirm delete (reuse existing Swal pattern)
-        $(document).on('click', '.hapus-data', function(e){
+        $(document).on('click', '.delete-data', function(e){
             e.preventDefault();
 
             Swal.fire({
@@ -55,9 +55,19 @@
         <div class="card-header d-flex align-items-center justify-content-between">
             <h3 class="card-title">Users</h3>
             <div class="card-toolbar">
-                <a href="{{ route('admin.users.create') }}" class="btn btn-sm btn-primary">
-                    Add User
-                </a>
+                <div class="btn-group">
+                    <button type="button" class="btn btn-sm btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                        Add User
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a class="dropdown-item" href="{{ route('admin.stud.create') }}?role=STUDENT">Student</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="{{ route('admin.tech.create') }}?role=TECHNICIAN">Technician</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
 
@@ -71,7 +81,7 @@
                         <th>Role</th>
                         <th>Status</th>
                         <th>Created at</th>
-                        <th style="width:120px">Tindakan</th>
+                        <th style="width:120px">Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -94,7 +104,7 @@
                                     Edit
                                 </a>
                                 <a href="{{ route('admin.users.destroy', $user->id) }}"
-                                   class="btn btn-sm btn-danger hapus-data">
+                                   class="btn btn-sm btn-danger delete-data">
                                     Delete
                                 </a>
                             </td>
