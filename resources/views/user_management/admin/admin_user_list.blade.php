@@ -50,25 +50,13 @@
 @section('content')
     <div id="kt_content_container" class="container-xxl">
         <div class="card-header d-flex align-items-center justify-content-between">
-        <h3 class="card-title mb-0">Users</h3>
-        <div class="card-toolbar d-flex align-items-center">
-            <!-- Small "+" icon button (top-right) -->
-            <a href="{{ route('admin.users.create') }}" class="btn btn-icon btn-primary btn-sm me-2" title="Tambah Pengguna">
-                <span class="h5 mb-0 text-white">+</span>
-            </a>
-
-            <!-- Optional full-text button for larger screens -->
-            <a href="{{ route('admin.users.create') }}" class="btn btn-sm btn-primary d-none d-sm-inline">
-                Add User
-            </a>
-        </div>
     </div>
     <div class="card">
         <div class="card-header d-flex align-items-center justify-content-between">
             <h3 class="card-title">Users</h3>
             <div class="card-toolbar">
                 <a href="{{ route('admin.users.create') }}" class="btn btn-sm btn-primary">
-                    Tambah Pengguna
+                    Add User
                 </a>
             </div>
         </div>
@@ -78,11 +66,11 @@
                 <thead>
                     <tr>
                         <th style="width:50px">No</th>
-                        <th>Nama</th>
+                        <th>Name</th>
                         <th>Email</th>
-                        <th>Peranan</th>
+                        <th>Role</th>
                         <th>Status</th>
-                        <th>Dicipta</th>
+                        <th>Created at</th>
                         <th style="width:120px">Tindakan</th>
                     </tr>
                 </thead>
@@ -107,7 +95,7 @@
                                 </a>
                                 <a href="{{ route('admin.users.destroy', $user->id) }}"
                                    class="btn btn-sm btn-danger hapus-data">
-                                    Hapus
+                                    Delete
                                 </a>
                             </td>
                         </tr>
