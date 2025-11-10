@@ -28,15 +28,15 @@
             e.preventDefault();
 
             Swal.fire({
-                title: 'Peringatan!',
-                text: 'Klik Teruskan untuk hapuskan data.',
-                icon: 'warning',
-                confirmButtonText: 'Teruskan',
-                showCancelButton: true,
-                cancelButtonText: 'Batal',
-                customClass: {
-                    confirmButton: "btn btn-primary",
-                    cancelButton: "btn btn-danger",
+            title: 'Warning!',
+            text: 'Click Continue to delete this data.',
+            icon: 'warning',
+            confirmButtonText: 'Continue',
+            showCancelButton: true,
+            cancelButtonText: 'Cancel',
+            customClass: {
+                confirmButton: "btn btn-primary",
+                cancelButton: "btn btn-danger",
                 }
             }).then((result) => {
                 if (result.value) {
