@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 use App\Http\Controllers\AdminUserController;   // Admin routes for user management
+use App\Models\Role;
 
 // Dashboard route: shows a list of up to 50 users (admin user list)
 Route::get('/dashboard', function () {
@@ -39,10 +40,14 @@ Route::middleware(['auth', 'verified'])->prefix('admin')->group(function () {
     })->name('admin.tech.create');
 });
 
-// Admin: show user edit page for a specific user (to be implemented)
-Route::get('/admin/admin_users_edit/{id}', function ($id) {
-    return "Edit User $id (to be implemented)";
-})->name('admin.users.edit');
+// Admin: show user edit page for a specific user
+Route::get('/admin/users/{user}/update', function (\App\Models\User $user) {
+    // THE FIX: Fetch all roles
+    $roles = DB::table('roles')->get();
+    // Pass BOTH 'user' AND 'roles' to the view
+    return view('user_management.admin.admin_user_update', compact('user', 'roles'));
+})->name('admin.users.update');
+
 
 // Admin: destroy a specific user (to be implemented)
 Route::get('/admin/admin_users_destroy/{id}', function ($id) {
