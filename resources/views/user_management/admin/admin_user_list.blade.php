@@ -75,19 +75,21 @@
             <table id="users-table" class="table table-striped table-bordered table-hover">
                 <thead>
                     <tr>
-                        <th style="width:50px">No</th>
+                        <th style="width:40px">No</th>
+                        <th>UserID</th>
                         <th>Name</th>
                         <th>Email</th>
                         <th>Role</th>
                         <th>Status</th>
                         <th>Created at</th>
-                        <th style="width:120px">Action</th>
+                        <th style="width:170px">Action</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach($users as $i => $user)
                         <tr>
                             <td>{{ $i + 1 }}</td>
+                            <td>{{ $user->userid }}</td>
                             <td>{{ $user->name }}</td>
                             <td>{{ $user->email }}</td>
                             <td>{{ optional($user->role)->name ?? '—' }}</td>
@@ -100,7 +102,7 @@
                             </td>
                             <td>{{ optional($user->created_at)->format('Y-m-d') }}</td>
                             <td>
-                                <a href="{{ route('admin.users.edit', $user->id) }}" class="btn btn-sm btn-primary">
+                                <a href="{{ route('admin.users.update', $user->id) }}" class="btn btn-sm btn-primary">
                                     Edit
                                 </a>
                                 <a href="{{ route('admin.users.destroy', $user->id) }}"

@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Create User')
+@section('title', 'Create Student Account')
 
 @section('page-header', 'User Management')
 
@@ -67,12 +67,12 @@
                         <!-- Name -->
                         <div class="col-md-6 mb-5">
                             <label for="name" class="form-label required">Name</label>
-                            <input type="text" 
-                                   class="form-control @error('name') is-invalid @enderror" 
-                                   id="name" 
-                                   name="name" 
-                                   value="{{ old('name') }}" 
-                                   required 
+                            <input type="text"
+                                   class="form-control @error('name') is-invalid @enderror"
+                                   id="name"
+                                   name="name"
+                                   value="{{ old('name') }}"
+                                   required
                                    autofocus>
                             @error('name')
                                 <div class="invalid-feedback">{{ $message }}</div>
@@ -82,11 +82,11 @@
                         <!-- Email -->
                         <div class="col-md-6 mb-5">
                             <label for="email" class="form-label required">Email</label>
-                            <input type="email" 
-                                   class="form-control @error('email') is-invalid @enderror" 
-                                   id="email" 
-                                   name="email" 
-                                   value="{{ old('email') }}" 
+                            <input type="email"
+                                   class="form-control @error('email') is-invalid @enderror"
+                                   id="email"
+                                   name="email"
+                                   value="{{ old('email') }}"
                                    required>
                             @error('email')
                                 <div class="invalid-feedback">{{ $message }}</div>
@@ -96,10 +96,10 @@
                         <!-- Password -->
                         <div class="col-md-6 mb-5">
                             <label for="password" class="form-label required">Password</label>
-                            <input type="password" 
-                                   class="form-control @error('password') is-invalid @enderror" 
-                                   id="password" 
-                                   name="password" 
+                            <input type="password"
+                                   class="form-control @error('password') is-invalid @enderror"
+                                   id="password"
+                                   name="password"
                                    required>
                             @error('password')
                                 <div class="invalid-feedback">{{ $message }}</div>
@@ -109,19 +109,19 @@
                         <!-- Password Confirmation -->
                         <div class="col-md-6 mb-5">
                             <label for="password_confirmation" class="form-label required">Confirm Password</label>
-                            <input type="password" 
-                                   class="form-control" 
-                                   id="password_confirmation" 
-                                   name="password_confirmation" 
+                            <input type="password"
+                                   class="form-control"
+                                   id="password_confirmation"
+                                   name="password_confirmation"
                                    required>
                         </div>
 
                         <!-- Role -->
                         <div class="col-md-6 mb-5">
                             <label for="role" class="form-label required">Role</label>
-                            <select class="form-select @error('role') is-invalid @enderror" 
-                                    id="role" 
-                                    name="role" 
+                            <select class="form-select @error('role') is-invalid @enderror"
+                                    id="role"
+                                    name="role"
                                     required>
                                 <option value="">Select Role</option>
                                 <option value="TECHNICIAN" {{ old('role') == 'TECHNICIAN' ? 'selected' : '' }}>Technician</option>
@@ -135,10 +135,10 @@
                         <!-- Phone Number -->
                         <div class="col-md-6 mb-5">
                             <label for="phone_num" class="form-label">Phone Number</label>
-                            <input type="text" 
-                                   class="form-control @error('phone_num') is-invalid @enderror" 
-                                   id="phone_num" 
-                                   name="phone_num" 
+                            <input type="text"
+                                   class="form-control @error('phone_num') is-invalid @enderror"
+                                   id="phone_num"
+                                   name="phone_num"
                                    value="{{ old('phone_num') }}">
                             @error('phone_num')
                                 <div class="invalid-feedback">{{ $message }}</div>
@@ -148,9 +148,9 @@
                         <!-- Status -->
                         <div class="col-md-6 mb-5">
                             <label for="status" class="form-label required">Status</label>
-                            <select class="form-select @error('status') is-invalid @enderror" 
-                                    id="status" 
-                                    name="status" 
+                            <select class="form-select @error('status') is-invalid @enderror"
+                                    id="status"
+                                    name="status"
                                     required>
                                 <option value="">Select Status</option>
                                 <option value="ACTIVE" {{ old('status') == 'ACTIVE' ? 'selected' : '' }}>Active</option>
@@ -164,8 +164,8 @@
                         <!-- Hostel (only for STUDENT role) -->
                         <div class="col-md-6 mb-5" id="hostel_field" style="display: none;">
                             <label for="hostel_id" class="form-label">Hostel</label>
-                            <select class="form-select @error('hostel_id') is-invalid @enderror" 
-                                    id="hostel_id" 
+                            <select class="form-select @error('hostel_id') is-invalid @enderror"
+                                    id="hostel_id"
                                     name="hostel_id">
                                 <option value="">Select Hostel (Optional)</option>
                                 @if(isset($hostels) && $hostels->count() > 0)
