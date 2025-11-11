@@ -136,18 +136,38 @@
                         <!-- Status -->
                         <div class="col-md-6 mb-5">
                             <label for="status" class="form-label required">Status</label>
-                            <select class="form-select @error('status') is-invalid @enderror"
-                                    id="status"
-                                    name="status"
+
+                            <input type="text"
+                                class="form-control"
+                                value="Active"
+                                readonly
+                                disabled>
+
+                            <input type="hidden"
+                                name="is_active"
+                                value="1">
+
+                            @error('is_active')
+                                <div class="invalid-feedback d-block">{{ $message }}</div>
+                            @enderror
+                        </div>
+
+                        <!-- With active or inavtive option
+                        <div class="col-md-6 mb-5">
+                            <label for="status" class="form-label required">Status</label>
+                            <select class="form-select @error('is_active') is-invalid @enderror"
+                                    id="is_active"
+                                    name="is_active"
                                     required>
                                 <option value="">Select Status</option>
-                                <option value="ACTIVE" {{ old('status') == 'ACTIVE' ? 'selected' : '' }}>Active</option>
-                                <option value="INACTIVE" {{ old('status') == 'INACTIVE' ? 'selected' : '' }}>Inactive</option>
+                                <option value="1" {{ old('is_active') == '1' ? 'selected' : '' }}>Active</option>
+                                <option value="0" {{ old('is_active') == '0' ? 'selected' : '' }}>Inactive</option>
                             </select>
                             @error('status')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
+                        -->
 
                         <!-- Hostel (only for STUDENT role) -->
                         <div class="col-md-6 mb-5" id="hostel_field" style="display: none;">

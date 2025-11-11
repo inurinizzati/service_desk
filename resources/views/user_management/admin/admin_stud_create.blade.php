@@ -162,6 +162,25 @@
                         <!-- Status -->
                         <div class="col-md-6 mb-5">
                             <label for="status" class="form-label required">Status</label>
+
+                            <input type="text"
+                                class="form-control"
+                                value="Active"
+                                readonly
+                                disabled>
+
+                            <input type="hidden"
+                                name="is_active"
+                                value="1">
+
+                            @error('is_active')
+                                <div class="invalid-feedback d-block">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        
+                        <!-- With active or inavtive option
+                        <div class="col-md-6 mb-5">
+                            <label for="status" class="form-label required">Status</label>
                             <select class="form-select @error('is_active') is-invalid @enderror"
                                     id="is_active"
                                     name="is_active"
@@ -174,6 +193,7 @@
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
+                        -->
 
                         <!-- Hostel (only for STUDENT role) -->
                         <!--
