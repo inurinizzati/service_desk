@@ -116,19 +116,33 @@
                                    required>
                         </div>
 
+                        <?php
+                            // Get the role from the old input (on validation failure) or the URL query parameter 'role'
+                            $selectedRole = old('role', request()->query('role'));
+
+                            // Define display text based on the value (for the visible field)
+                            $roleDisplay = match (strtoupper($selectedRole)) {
+                                'STUDENT' => 'Student',
+                                'TECHNICIAN' => 'Technician',
+                                default => 'Role Not Set',
+                            };
+                        ?>
                         <!-- Role -->
                         <div class="col-md-6 mb-5">
                             <label for="role" class="form-label required">Role</label>
-                            <select class="form-select @error('role') is-invalid @enderror"
-                                    id="role"
-                                    name="role"
-                                    required>
-                                <option value="">Select Role</option>
-                                <option value="TECHNICIAN" {{ old('role') == 'TECHNICIAN' ? 'selected' : '' }}>Technician</option>
-                                <option value="STUDENT" {{ old('role') == 'STUDENT' ? 'selected' : '' }}>Student</option>
-                            </select>
+
+                            <input type="text"
+                                class="form-control"
+                                value="{{ $roleDisplay }}"
+                                readonly
+                                disabled>
+
+                            <input type="hidden"
+                                name="role"
+                                value="{{ strtoupper($selectedRole) }}">
+
                             @error('role')
-                                <div class="invalid-feedback">{{ $message }}</div>
+                                <div class="invalid-feedback d-block">{{ $message }}</div>
                             @enderror
                         </div>
 
@@ -148,13 +162,13 @@
                         <!-- Status -->
                         <div class="col-md-6 mb-5">
                             <label for="status" class="form-label required">Status</label>
-                            <select class="form-select @error('status') is-invalid @enderror"
-                                    id="status"
-                                    name="status"
+                            <select class="form-select @error('is_active') is-invalid @enderror"
+                                    id="is_active"
+                                    name="is_active"
                                     required>
                                 <option value="">Select Status</option>
-                                <option value="ACTIVE" {{ old('status') == 'ACTIVE' ? 'selected' : '' }}>Active</option>
-                                <option value="INACTIVE" {{ old('status') == 'INACTIVE' ? 'selected' : '' }}>Inactive</option>
+                                <option value="1" {{ old('is_active') == '1' ? 'selected' : '' }}>Active</option>
+                                <option value="0" {{ old('is_active') == '0' ? 'selected' : '' }}>Inactive</option>
                             </select>
                             @error('status')
                                 <div class="invalid-feedback">{{ $message }}</div>
@@ -162,6 +176,7 @@
                         </div>
 
                         <!-- Hostel (only for STUDENT role) -->
+                        <!--
                         <div class="col-md-6 mb-5" id="hostel_field" style="display: none;">
                             <label for="hostel_id" class="form-label">Hostel</label>
                             <select class="form-select @error('hostel_id') is-invalid @enderror"
@@ -180,7 +195,7 @@
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                             <div class="form-text">Optional - Only applicable for students</div>
-                        </div>
+                        </div>-->
                     </div>
 
                     <!-- Form Actions -->
