@@ -11,23 +11,45 @@
                 id="#kt_aside_menu" data-kt-menu="true">
                   <div data-kt-menu-trigger="click" class="menu-item here show menu-accordion">
                        <div class="menu-item pt-5">
-                            {{-- <div class="menu-content">
+                            <div class="menu-content">
                                 <span class="menu-heading fw-bold text-uppercase fs-7">Menu</span>
-                            </div> --}}
-                            {{-- <div class="menu-item">
-                                <a class="menu-link {{ request()->routeIs('#') ? ' active' : '' }}"
-                                    href="{{ route('#') }}">
+                            </div>
+                            <div class="menu-item">
+                                <a class="menu-link {{ request()->routeIs('feedback.index') ? ' active' : '' }}"
+                                    href="{{ route('feedback.index') }}">
                                     <span class="menu-icon">
-                                        <i class="ki-duotone ki-element-11 fs-2">
+                                        <i class="ki-duotone ki-star fs-2">
+                                        </i>
+                                    </span>
+                                    <span class="menu-title fw-semibold">Feedback</span>
+                                </a>
+                            </div>
+                            <div class="menu-item">
+                                <a class="menu-link {{ request()->routeIs('feedback.index_admin') ? ' active' : '' }}"
+                                    href="{{ route('feedback.index_admin') }}">
+                                    <span class="menu-icon">
+                                        <i class="ki-duotone ki-medal-star fs-2">
                                             <span class="path1"></span>
                                             <span class="path2"></span>
                                             <span class="path3"></span>
                                             <span class="path4"></span>
                                         </i>
                                     </span>
-                                    <span class="menu-title fw-semibold">Dashboard</span>
+                                    <span class="menu-title fw-semibold">Feedback</span>
                                 </a>
-                            </div> --}}
+                            </div>
+                            <div class="menu-item">
+                                <a class="menu-link {{ request()->routeIs('feedback.index_technian') ? ' active' : '' }}"
+                                    href="{{ route('feedback.index_technian') }}">
+                                    <span class="menu-icon">
+                                        <i class="ki-duotone ki-message-minus fs-2">
+                                            <span class="path1"></span>
+                                            <span class="path2"></span>
+                                        </i>
+                                    </span>
+                                    <span class="menu-title fw-semibold">Feedback</span>
+                                </a>
+                            </div>
                         </div>
                   </div>
             </div>
