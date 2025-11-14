@@ -9,7 +9,9 @@
 @endsection
 
 @section('js_after')
-       <script src="{{ asset ('metronic/js/create.js')}}"></script>
+<script src="{{ asset ('metronic/js/create.js')}}"></script>
+<script src="{{ asset('metronic/plugins/global/plugins.bundle.js') }}"></script>
+<script src="{{ asset('metronic/js/scripts.bundle.js') }}"></script>
 @endsection
 
 @section('content')
@@ -62,7 +64,7 @@
                                     <label class="d-flex align-items-center fs-6 fw-semibold mb-2">
                                         <span class="required">Location</span>
                                     </label>
-                                    <input type="text" class="form-control form-control-solid" placeholder="Enter your location" name="title" />
+                                    <input type="text" class="form-control form-control-solid" placeholder="Enter your location" name="location" />
                                 </div>
 
                                 <!-- Date  Service Not Function-->
@@ -75,12 +77,21 @@
 
                                 <!--begin::Actions-->
                                 <div class="text-center">
-                                    <button type="reset" id="kt_modal_new_ticket_cancel" class="btn btn-light me-3">Cancel</button>
-                                    <button type="submit" id="kt_modal_new_ticket_submit" class="btn btn-primary">
-                                        <span class="indicator-label">Submit</span>
-                                        <span class="indicator-progress">Please wait...
-                                        <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
-                                    </button>
+                                    <div class="card-footer d-flex justify-content-end py-6 px-9">
+                                        <button type="reset" id="kt_modal_new_ticket_cancel" class="btn btn-light me-3">Cancel</button>
+                                        <button type="submit" id="kt_modal_new_ticket_submit" class="btn btn-primary button-loading">
+                                            <i class="ki-duotone ki-send">
+                                                <span class="path1"></span>
+                                                <span class="path2"></span>
+                                            </i>
+                                            <span class="indicator-label">
+                                                Submit
+                                            </span>
+                                            <span class="indicator-progress">
+                                                Please wait <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
+                                            </span>
+                                        </button>
+                                    </div>
                                 </div>
                                 <!--end::Actions-->
                             </form>
