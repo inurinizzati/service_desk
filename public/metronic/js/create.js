@@ -82,7 +82,7 @@ var KTModalNewTicket = function () {
                     buttonsStyling: false,
                     confirmButtonText: "Ok, got it!",
                     customClass: {
-                        confirmButton: "btn btn-primary"
+                        confirmButton: "btn btn-info"
                     }
                 }).then(function (result) {
                     if (result.isConfirmed) {
@@ -100,7 +100,7 @@ var KTModalNewTicket = function () {
                 buttonsStyling: false,
                 confirmButtonText: "Ok, got it!",
                 customClass: {
-                    confirmButton: "btn btn-primary"
+                    confirmButton: "btn btn-info"
                 }
             });
         }
@@ -118,7 +118,7 @@ cancelButton.addEventListener('click', function (e) {
 				confirmButtonText: "Yes, cancel it!",
 				cancelButtonText: "No, return",
 				customClass: {
-					confirmButton: "btn btn-primary",
+					confirmButton: "btn btn-info",
 					cancelButton: "btn btn-active-light"
 				}
 			}).then(function (result) {
@@ -133,7 +133,7 @@ cancelButton.addEventListener('click', function (e) {
 						buttonsStyling: false,
 						confirmButtonText: "Ok, got it!",
 						customClass: {
-							confirmButton: "btn btn-primary",
+							confirmButton: "btn btn-info",
 						}
 					});
 				}
