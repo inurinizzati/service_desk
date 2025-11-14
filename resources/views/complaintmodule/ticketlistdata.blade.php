@@ -13,28 +13,6 @@
 @section('js_after')
     <script src="{{ asset ('metronic/assets/plugins/custom/datatables/datatables.bundle.js')}}"></script>
     <script src="{{ asset ('metronic/js/datatable.js')}}"></script>
-     <script>
-        $(document).on('click', '.hapus-data', function(e){
-            e.preventDefault(); // Halang link daripada terus redirect
-
-            Swal.fire({
-                title: 'Peringatan!',
-                text: 'Klik Teruskan untuk hapuskan data.',
-                icon: 'warning',
-                confirmButtonText: 'Teruskan',
-                showCancelButton: true,
-                cancelButtonText: 'Batal',
-                customClass: {
-                    confirmButton: "btn btn-primary",
-                    cancelButton: "btn btn-danger",
-                }
-            }).then((result) => {
-                if (result.value) {
-                    window.location.href = $(this).attr("href");
-                }
-            });
-        });
-    </script>
 @endsection
 
 @section('content')
@@ -43,7 +21,7 @@
         <div class="card-header">
             <h3 class="card-title">History of Ticket List</h3>
             <div class="card-toolbar">
-                <a href=/createticket class="btn btn-sm btn-primary">
+                <a href=/createticket class="btn btn-sm btn-info fs-6">
                     <i class="ki-duotone ki-plus-square">
                         <span class="path1"></span>
                         <span class="path2"></span>
@@ -54,50 +32,91 @@
             </div>
         </div>
         <div class="card-body">
+            <style>
+                /* Active page number button (currently blue) → make it purple */
+                .page-item.active .page-link {
+                    background-color: #6f42c1 !important; /* Purple */
+                    border-color: #6f42c1 !important;
+                    color: #fff !important;
+                }
+
+                /* Normal page number buttons (optional, if you also want purple border on hover/normal) */
+                .page-link {
+                    color: #6f42c1 !important;
+                }
+
+                .page-link:hover {
+                    background-color: #ebe0ff !important; /* light purple hover */
+                    color: #6f42c1 !important;
+                }
+                </style>
             <table class="m-datatable table align-middle table-row-dashed fs-6 gy-5">
                 <thead>
-                    <tr class="text-start text-muted fw-bold fs-7 text-uppercase gs-0">
+                    <tr class="text-start text-dark fw-bold fs-7 text-uppercase gs-0">
                         <th>ID</th>
                         <th>Title</th>
-                        <th class="text-center">Status</th>
-                        <th class="text-end">Actions</th>
+                        <th>Category</th>
+                        <th>Date</th>
+                        <th class="text-start">Status</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
-                <tbody class="text-gray-600 fw-semibold">
+                <tbody class="text-black-600 fw-semibold">
                     @foreach ($tickets as $ticket)
                         <tr onclick="window.location='{{ route('ticket.details', $ticket->id) }}';" style="cursor:pointer;">
                             <td>{{ $ticket->id }}</td>
-                            <td>{{ $ticket->title }}</td>
-                            <td class="text-center">
+
+                            <!-- Title + Location in the same cell -->
+                            <td>
+                                <div class="fw-bold">{{ $ticket->title }}</div>
+                                <div class="text-muted" style="font-size: 12px;">Location: {{ $ticket->location }}</div>
+                            </td>
+                            <td>{{ $ticket->category }}</td>
+                            <td>{{ $ticket->date }}</td>
+
+                            <!-- Status aligned left -->
+                            <td class="text-start">
                                 @if ($ticket->status == 'Completed')
-                                    <span class="badge bg-success text-white fs-6">Completed</span>
+                                    <span class="badge badge-light-success fs-6">Completed</span>
                                 @elseif ($ticket->status == 'Pending')
-                                    <span class="badge bg-warning text-white fs-6">Pending</span>
+                                    <span class="badge badge-light-warning fs-6">Pending</span>
                                 @else
-                                    <span class="badge bg-secondary text-white fs-6">Unknown</span>
+                                    <span class="badge badge-light-secondary fs-6">Unknown</span>
                                 @endif
                             </td>
-                            {{-- <td class="text-end"> --}}
-                                {{-- <a href="{{ route('ticket.edit', $ticket->id) }}" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1" title="Edit">
-                                    <i class="ki-duotone text-warning ki-notepad-edit fs-2">
-                                        <span class="path1"></span>
-                                        <span class="path2"></span>
-                                    </i>
-                                </a> --}}
-                                {{-- <a href="{{ route('ticket.delete', $ticket->id) }}" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm hapus-data" title="Delete">
-                                    <i class="ki-duotone text-danger ki-trash fs-2">
-                                        <span class="path1"></span>
-                                        <span class="path2"></span>
-                                        <span class="path3"></span>
-                                        <span class="path4"></span>
-                                        <span class="path5"></span>
-                                    </i>
-                                </a> --}}
-                            {{-- </td> --}}
+
+                            <td class="text-start">
+                                @if ($ticket->status == 'Completed')
+                                    @if (isset($ticket->rating) && $ticket->rating > 0)
+                                        {{-- Already rated - show stars --}}
+                                        <span class="star-display">
+                                            @for ($i = 1; $i <= 5; $i++)
+                                                @if ($i <= $ticket->rating)
+                                                    ⭐
+                                                @else
+                                                    ☆
+                                                @endif
+                                            @endfor
+                                        </span>
+                                    @else
+                                        {{-- Not yet rated - show link as button --}}
+                                        <a href="#"
+                                        class="btn btn-sm btn-info fs-6"
+                                        onclick="event.stopPropagation();">
+                                            {{-- <i class="ki-duotone ki-star fs-4">
+                                                <span class="path1"></span>
+                                                <span class="path2"></span>
+                                            </i> --}}
+                                            Rate
+                                        </a>
+                                    @endif
+                                @else
+                                    <span class="text-muted">-</span>
+                                @endif
+                            </td>
                         </tr>
                     @endforeach
                 </tbody>
-
             </table>
         </div>
     </div>

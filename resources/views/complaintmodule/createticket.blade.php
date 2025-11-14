@@ -45,7 +45,7 @@
                                             <option value="">Select a category</option>
                                             <option value="1">Room Facilities</option>
                                             <option value="2">Electrical & Lighting</option>
-                                            <option value="3">Internet connection</option>
+                                            <option value="3">Internet Connection</option>
                                             <option value="4">Cleanliness & Maintenance</option>
                                             <option value="5">Toilet & Plumbing</option>
                                             <option value="6">Others</option>
@@ -79,7 +79,7 @@
                                 <div class="text-center">
                                     <div class="card-footer d-flex justify-content-end py-6 px-9">
                                         <button type="reset" id="kt_modal_new_ticket_cancel" class="btn btn-light me-3">Cancel</button>
-                                        <button type="submit" id="kt_modal_new_ticket_submit" class="btn btn-primary button-loading">
+                                        <button type="submit" id="kt_modal_new_ticket_submit" class="btn btn-info button-loading">
                                             <i class="ki-duotone ki-send">
                                                 <span class="path1"></span>
                                                 <span class="path2"></span>
