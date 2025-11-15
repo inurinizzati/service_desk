@@ -70,7 +70,7 @@
                                 <!-- Date  Service Not Function-->
                                 <div class="row g-9 mb-8">
                                     <div class="col-12 fv-row">
-                                        <label class="required fs-6 fw-semibold mb-2">Date Service Not Function</label>
+                                        <label class="required fs-6 fw-semibold mb-2">Malfunction Date</label>
                                         <input class="form-control form-control-solid" placeholder="Select a date" name="due_date" type="date" />
                                     </div>
                                 </div>
