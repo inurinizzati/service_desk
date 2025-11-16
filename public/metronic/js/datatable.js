@@ -1,6 +1,6 @@
 $(".m-datatable").DataTable({
     "language": {
-        "url": "https://cdn.datatables.net/plug-ins/1.13.7/i18n/ms.json",
+        "url": "https://cdn.datatables.net/plug-ins/1.13.7/i18n/en-US.json",
     },
     "dom":
     "<'row'" +

@@ -1,0 +1,124 @@
+@extends('layouts.app')
+
+@section('title', 'Ticket List')
+
+@section('page-header',  'Ticket List')
+
+{{-- @section('breadcrumbs',  Breadcrumbs::render('penceramah') ) --}}
+
+@section('css_after')
+    <link href="{{ asset ('metronic/assets/plugins/custom/datatables/datatables.bundle.css')}}" rel="stylesheet" type="text/css" />
+@endsection
+
+@section('js_after')
+    <script src="{{ asset ('metronic/assets/plugins/custom/datatables/datatables.bundle.js')}}"></script>
+    <script src="{{ asset ('metronic/js/datatable.js')}}"></script>
+@endsection
+
+@section('content')
+<div id="kt_content_container" class="container-xxl">
+    <div class="card shadow-sm">
+        <div class="card-header">
+            <h3 class="card-title">History of Ticket List</h3>
+            <div class="card-toolbar">
+                <a href=/createticket class="btn btn-sm btn-info fs-6">
+                    <i class="ki-duotone ki-plus-square">
+                        <span class="path1"></span>
+                        <span class="path2"></span>
+                        <span class="path3"></span>
+                    </i>
+                    Create Ticket
+                </a>
+            </div>
+        </div>
+        <div class="card-body">
+            <style>
+                /* Active page number button (currently blue) → make it purple */
+                .page-item.active .page-link {
+                    background-color: #6f42c1 !important; /* Purple */
+                    border-color: #6f42c1 !important;
+                    color: #fff !important;
+                }
+
+                /* Normal page number buttons (optional, if you also want purple border on hover/normal) */
+                .page-link {
+                    color: #6f42c1 !important;
+                }
+
+                .page-link:hover {
+                    background-color: #ebe0ff !important; /* light purple hover */
+                    color: #6f42c1 !important;
+                }
+                </style>
+            <table class="m-datatable table align-middle table-row-dashed fs-6 gy-5">
+                <thead>
+                    <tr class="text-start text-dark fw-bold fs-7 text-uppercase gs-0">
+                        <th>ID</th>
+                        <th>Title</th>
+                        <th>Category</th>
+                        <th>Date</th>
+                        <th class="text-start">Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody class="text-black-600 fw-semibold">
+                    @foreach ($tickets as $ticket)
+                        <tr onclick="window.location='{{ route('ticket.details', $ticket->id) }}';" style="cursor:pointer;">
+                            <td>{{ $ticket->id }}</td>
+
+                            <!-- Title + Location in the same cell -->
+                            <td>
+                                <div class="fw-bold">{{ $ticket->title }}</div>
+                                <div class="text-muted" style="font-size: 12px;">Location: {{ $ticket->location }}</div>
+                            </td>
+                            <td>{{ $ticket->category }}</td>
+                            <td>{{ $ticket->date }}</td>
+
+                            <!-- Status aligned left -->
+                            <td class="text-start">
+                                @if ($ticket->status == 'Completed')
+                                    <span class="badge badge-light-success fs-6">Completed</span>
+                                @elseif ($ticket->status == 'Pending')
+                                    <span class="badge badge-light-warning fs-6">Pending</span>
+                                @else
+                                    <span class="badge badge-light-secondary fs-6">Unknown</span>
+                                @endif
+                            </td>
+
+                            <td class="text-start">
+                                @if ($ticket->status == 'Completed')
+                                    @if (isset($ticket->rating) && $ticket->rating > 0)
+                                        {{-- Already rated - show stars --}}
+                                        <span class="star-display">
+                                            @for ($i = 1; $i <= 5; $i++)
+                                                @if ($i <= $ticket->rating)
+                                                    ⭐
+                                                @else
+                                                    ☆
+                                                @endif
+                                            @endfor
+                                        </span>
+                                    @else
+                                        {{-- Not yet rated - show link as button --}}
+                                        <a href="#"
+                                        class="btn btn-sm btn-info fs-6"
+                                        onclick="event.stopPropagation();">
+                                            {{-- <i class="ki-duotone ki-star fs-4">
+                                                <span class="path1"></span>
+                                                <span class="path2"></span>
+                                            </i> --}}
+                                            Rate
+                                        </a>
+                                    @endif
+                                @else
+                                    <span class="text-muted">-</span>
+                                @endif
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+@endsection

@@ -1,5 +1,5 @@
 <?php
-
+use App\Http\Controllers\TicketController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\DB;
@@ -67,5 +67,18 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+
+//Complaint Ticket Module
+
+Route::get('/createticket', function () {
+    return view('complaintmodule.createticket');
+});
+
+Route::get('/ticketlistdata', [TicketController::class, 'index'])->name('ticket.list');
+
+Route::get('/ticket/{id}', [TicketController::class, 'show'])->name('ticket.details');
+
+
 
 require __DIR__.'/auth.php';
