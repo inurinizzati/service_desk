@@ -26,7 +26,7 @@ Some are editable. at the bottom of the page there will be cancel button and upd
                 icon: 'warning',
                 confirmButtonText: 'Teruskan',
                 showCancelButton: true,
-                cancelButtonText: 'Batal',
+                cancelButtonText: 'Cancel',
                 customClass: {
                     confirmButton: "btn btn-primary",
                     cancelButton: "btn btn-danger",

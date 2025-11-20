@@ -33,8 +33,12 @@
                 <div class="row">
                     <div class="col-md-6 mb-5">
                         <label for="userid" class="form-label required">UserID</label>
-                        <input type="text" class="form-control" id="userid" name="userid" placeholder="e.g. studone"
-                               value="{{ old('userid', $user->userid) }}" required>
+                        <input type="text"
+                            class="form-control"
+                            id="userid"
+                            value="{{ $user->userid }}"
+                            readonly />
+                        <input type="hidden" name="userid" value="{{ $user->userid }}" />
                         @error('userid')
                             <div class="text-danger mt-1">{{ $message }}</div>
                         @enderror
@@ -62,14 +66,15 @@
 
                     <div class="col-md-6 mb-5">
                         <label for="role_id" class="form-label required">Role</label>
-                        <select class="form-select" id="role_id" name="role_id" required>
+                        <select class="form-select" id="role_id" disabled>
                             <option value="">Select a Role</option>
                             @foreach($roles as $role)
-                                <option value="{{ $role->id }}" {{ old('role_id', $user->role_id) == $role->id ? 'selected' : '' }}>
+                                <option value="{{ $role->id }}" {{ $user->role_id == $role->id ? 'selected' : '' }}>
                                     {{ $role->name }}
                                 </option>
                             @endforeach
                         </select>
+                        <input type="hidden" name="role_id" value="{{ $user->role_id }}" />
                         @error('role_id')
                             <div class="text-danger mt-1">{{ $message }}</div>
                         @enderror

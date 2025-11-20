@@ -24,6 +24,12 @@
             </div>
 
             <div class="card-body">
+                <!-- UserID Display (Auto-generated) -->
+                <div class="alert alert-info mb-5">
+                    <i class="fas fa-info-circle"></i>
+                    <strong>Note:</strong> UserID will be automatically generated when the technician account is created.
+                </div>
+
                 @if ($errors->any())
                     <div class="alert alert-danger">
                         <ul class="mb-0">
@@ -63,6 +69,20 @@
                                    value="{{ old('email') }}"
                                    required>
                             @error('email')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+
+                        <!-- Staff ID -->
+                        <div class="col-md-6 mb-5">
+                            <label for="staff_id" class="form-label required">Staff ID</label>
+                            <input type="text"
+                                class="form-control @error('staff_id') is-invalid @enderror"
+                                   id="staff_id"
+                                   name="staff_id"
+                                   value="{{ old('staff_id') }}"
+                                   required>
+                            @error('staff_id')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>

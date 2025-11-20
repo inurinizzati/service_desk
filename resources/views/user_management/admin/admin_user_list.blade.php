@@ -63,6 +63,7 @@
             // Confirm delete (existing code)
             $(document).on('click', '.delete-data', function(e){
                 e.preventDefault();
+                const row = $(this).closest('tr');
 
                 Swal.fire({
                     title: 'Warning!',
@@ -77,7 +78,8 @@
                     }
                 }).then((result) => {
                     if (result.value) {
-                        window.location.href = $(this).attr("href");
+                        // Frontend-only removal
+                        row.fadeOut(300, function() { $(this).remove(); });
                     }
                 });
             });

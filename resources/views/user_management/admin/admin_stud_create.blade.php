@@ -53,7 +53,7 @@
                 <!-- UserID Display (Auto-generated) -->
                 <div class="alert alert-info mb-5">
                     <i class="fas fa-info-circle"></i>
-                    <strong>Note:</strong> UserID will be automatically generated when the student is created.
+                    <strong>Note:</strong> UserID will be automatically generated when the student account is created.
                 </div>
 
                 @if ($errors->any())
