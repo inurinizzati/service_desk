@@ -9,16 +9,15 @@
 @endsection
 
 @section('js_after')
-<script src="{{ asset ('metronic/js/create.js')}}"></script>
-<script src="{{ asset('metronic/plugins/global/plugins.bundle.js') }}"></script>
-<script src="{{ asset('metronic/js/scripts.bundle.js') }}"></script>
+    <script src="{{ asset ('metronic/js/create.js')}}"></script>
+    <script src="{{ asset('metronic/plugins/global/plugins.bundle.js') }}"></script>
+    <script src="{{ asset('metronic/js/scripts.bundle.js') }}"></script>
 @endsection
 
 @section('content')
-    <body id="kt_body" class="bg-body">
+<body id="kt_body" class="bg-body">
     <div class="d-flex flex-column flex-root">
         <div class="d-flex flex-column flex-column-fluid">
-
                 <!-- Ticket Form -->
                 <div class="d-flex justify-content-center align-items-center min-vh-100">
                     <div class="card shadow-sm" style="max-width: 800px; width:100%">
@@ -70,7 +69,7 @@
                                 <!-- Date  Service Not Function-->
                                 <div class="row g-9 mb-8">
                                     <div class="col-12 fv-row">
-                                        <label class="required fs-6 fw-semibold mb-2">Date Service Not Function</label>
+                                        <label class="required fs-6 fw-semibold mb-2">Malfunction Date</label>
                                         <input class="form-control form-control-solid" placeholder="Select a date" name="due_date" type="date" />
                                     </div>
                                 </div>

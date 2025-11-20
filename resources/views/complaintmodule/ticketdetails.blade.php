@@ -38,21 +38,36 @@
                 </div>
 
                 <div class="mb-4">
-                    <h6 class="fw-semibold text-muted mb-1">Date Service Not Function</h6>
+                    <h6 class="fw-semibold text-muted mb-1">Malfunction Date</h6>
                     <p class="fs-6 mb-0">{{ $ticket->date }}</p>
                 </div>
 
                 <div class="mb-4">
-                <h6 class="fw-semibold text-muted mb-1">Status</h6>
-                @if ($ticket->status == 'Completed')
-                    <span class="badge bg-success text-white fs-6" >Completed</span>
-                @elseif ($ticket->status == 'Pending')
-                    <span class="badge bg-warning text-white fs-6">Pending</span>
-                @else
-                    <span class="badge bg-secondary text-white fs-6">Unknown</span>
-                @endif
+                    <h6 class="fw-semibold text-muted mb-1">Status</h6>
+                        @if ($ticket->status == 'Completed')
+                            <span class="badge bg-success text-white fs-6" >Completed</span>
+                        @elseif ($ticket->status == 'Pending')
+                            <span class="badge bg-warning text-white fs-6">Pending</span>
+                        @elseif ($ticket->status == 'Cancel')
+                            <span class="badge bg-danger text-white fs-6">Cancel</span>
+                        @endif
+                </div>
+
+                <div class="mb-4">
+                    @if (!empty($ticket->comment))
+                        <h6 class="fw-semibold text-muted mb-1">Comment</h6>
+                        @if ($ticket->status == 'Completed')
+                            <p class="fs-6 mb-0 bg-success-subtle p-3 rounded w-100" style="min-height: 60px;">
+                                {{ $ticket->comment }}
+                            </p>
+                        @elseif ($ticket->status == 'Cancel')
+                            <p class="fs-6 mb-0 bg-danger-subtle p-3 rounded w-100" style="min-height: 60px;">
+                                {{ $ticket->comment }}
+                            </p>
+                        @endif
+                    @endif
+                </div>
             </div>
-        </div>
 
             <div class="card-footer text-end">
                 <a href="{{ route('ticket.list') }}" class="btn btn-sm btn-info fs-6">Back</a>

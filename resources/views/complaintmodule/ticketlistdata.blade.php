@@ -4,7 +4,6 @@
 
 @section('page-header',  'Ticket List')
 
-{{-- @section('breadcrumbs',  Breadcrumbs::render('penceramah') ) --}}
 
 @section('css_after')
     <link href="{{ asset ('metronic/assets/plugins/custom/datatables/datatables.bundle.css')}}" rel="stylesheet" type="text/css" />
@@ -35,28 +34,28 @@
             <style>
                 /* Active page number button (currently blue) → make it purple */
                 .page-item.active .page-link {
-                    background-color: #6f42c1 !important; /* Purple */
-                    border-color: #6f42c1 !important;
+                    background-color: #7239EA !important; /* Purple */
+                    border-color: #7239EA !important;
                     color: #fff !important;
                 }
 
                 /* Normal page number buttons (optional, if you also want purple border on hover/normal) */
                 .page-link {
-                    color: #6f42c1 !important;
+                    color: #7239EA !important;
                 }
 
                 .page-link:hover {
                     background-color: #ebe0ff !important; /* light purple hover */
-                    color: #6f42c1 !important;
+                    color: #7239EA !important;
                 }
-                </style>
+            </style>
             <table class="m-datatable table align-middle table-row-dashed fs-6 gy-5">
                 <thead>
                     <tr class="text-start text-dark fw-bold fs-7 text-uppercase gs-0">
                         <th>ID</th>
                         <th>Title</th>
                         <th>Category</th>
-                        <th>Date</th>
+                        <th>Malfunction Date</th>
                         <th class="text-start">Status</th>
                         <th>Action</th>
                     </tr>
@@ -80,6 +79,8 @@
                                     <span class="badge badge-light-success fs-6">Completed</span>
                                 @elseif ($ticket->status == 'Pending')
                                     <span class="badge badge-light-warning fs-6">Pending</span>
+                                @elseif ($ticket->status == 'Cancel')
+                                    <span class="badge badge-light-danger fs-6">Cancel</span>
                                 @else
                                     <span class="badge badge-light-secondary fs-6">Unknown</span>
                                 @endif
@@ -100,9 +101,7 @@
                                         </span>
                                     @else
                                         {{-- Not yet rated - show link as button --}}
-                                        <a href="#"
-                                        class="btn btn-sm btn-info fs-6"
-                                        onclick="event.stopPropagation();">
+                                        <a href="{{ route('feedback.create', $ticket->id) }}" class="btn btn-sm btn-info fs-6" onclick="event.stopPropagation();">
                                             {{-- <i class="ki-duotone ki-star fs-4">
                                                 <span class="path1"></span>
                                                 <span class="path2"></span>
