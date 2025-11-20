@@ -173,53 +173,6 @@
             <!-- Changed container-xxl to container-fluid for better mobile fit, or keep xxl but ensure no negative margins -->
             <div id="kt_content_container" class="container-xxl">
 
-                <!--begin::Row (Stats)-->
-                <!-- g-5 sets gap, gy-5 adds vertical gap on mobile stack -->
-                <div class="row g-5 g-xl-8 mb-5 mb-xl-8">
-
-                    <!-- Students Card -->
-                    <div class="col-md-6 col-xl-6">
-                        <a href="#" class="card bg-primary hoverable card-xl-stretch h-100">
-                            <div class="card-body">
-                                <!-- YOUR CUSTOM LAYOUT: Stack on mobile (flex-column), Row on Desktop (flex-md-row) -->
-                                <div class="d-flex stat-row justify-content-between align-items-center mb-2 mt-5 flex-column flex-md-row">
-                                    <div class="stat-left">
-                                        <div class="text-white fw-bold fs-2">Total Students</div>
-                                        <div class="fw-semibold text-white opacity-75">USM student who lived in desasiswa</div>
-                                    </div>
-
-                                    <div class="text-white stat-big">
-                                        {{ $totalStudents ?? 200 }}
-                                    </div>
-                                </div>
-                                <!-- END CUSTOM LAYOUT -->
-
-                            </div>
-                        </a>
-                    </div>
-
-                    <!-- Technicians Card -->
-                    <div class="col-md-6 col-xl-6">
-                        <a href="#" class="card bg-dark hoverable card-xl-stretch h-100">
-                            <div class="card-body">
-                                <!-- YOUR CUSTOM LAYOUT -->
-                                <div class="d-flex stat-row justify-content-between align-items-center mb-2 mt-5 flex-column flex-md-row">
-                                    <div class="stat-left">
-                                        <div class="text-white fw-bold fs-2">Total Technicians</div>
-                                        <div class="fw-semibold text-white opacity-75">USM Technicians in desasiswa</div>
-                                    </div>
-
-                                    <div class="text-white stat-big">
-                                        {{ $totalTechnicians ?? 10 }}
-                                    </div>
-                                </div>
-                                <!-- END CUSTOM LAYOUT -->
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <!--end::Row-->
-
                 <!--begin::Row (Charts)-->
                 <div class="row g-5 gy-5">
 
