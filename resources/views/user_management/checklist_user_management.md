@@ -1,0 +1,13 @@
+CHECKLIST FOR USER MANAGEMENT
+-  /dashboard currently is not the real dashboard. it's should be /user_list
+-  improvise the log in and register page to match brand
+-  log in as user and log in as admin interface
+-/ admin.userlist
+-/ admin.createstud form
+-/ admin.creattech form
+-  admin.create user -> submit -> user list page
+-  admin.updateuser -> update data -> user list page
+-  admin.delete user -> delete data in user list page
+-  user.profile
+-  user.profile -> edit profile -> update
+-  authentication

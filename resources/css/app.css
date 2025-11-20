@@ -1,3 +1,37 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+:root {
+    --bs-primary: #6f42c1;
+    --bs-primary-rgb: 111, 66, 193;
+}
+
+/* Buttons */
+.btn-primary,
+.btn.btn-primary {
+    background-color: #6f42c1 !important;
+    border-color: #6f42c1 !important;
+}
+.btn-primary:hover,
+.btn.btn-primary:hover {
+    background-color: #5936a4 !important;
+    border-color: #5936a4 !important;
+}
+.btn-outline-primary {
+    color: #6f42c1 !important;
+    border-color: #6f42c1 !important;
+}
+.btn-outline-primary:hover {
+    background-color: #6f42c1 !important;
+    border-color: #6f42c1 !important;
+    color: #fff !important;
+}
+
+/* Links or text with .text-primary */
+.text-primary {
+    color: #6f42c1 !important;
+}
+
+/* Badges, pagination, etc. if needed */
+.badge-primary,
+.page-item.active .page-link {
+    background-color: #6f42c1 !important;
+    border-color: #6f42c1 !important;
+}
