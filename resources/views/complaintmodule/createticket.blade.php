@@ -9,16 +9,15 @@
 @endsection
 
 @section('js_after')
-<script src="{{ asset ('metronic/js/create.js')}}"></script>
-<script src="{{ asset('metronic/plugins/global/plugins.bundle.js') }}"></script>
-<script src="{{ asset('metronic/js/scripts.bundle.js') }}"></script>
+    <script src="{{ asset ('metronic/js/create.js')}}"></script>
+    <script src="{{ asset('metronic/plugins/global/plugins.bundle.js') }}"></script>
+    <script src="{{ asset('metronic/js/scripts.bundle.js') }}"></script>
 @endsection
 
 @section('content')
-    <body id="kt_body" class="bg-body">
+<body id="kt_body" class="bg-body">
     <div class="d-flex flex-column flex-root">
         <div class="d-flex flex-column flex-column-fluid">
-
                 <!-- Ticket Form -->
                 <div class="d-flex justify-content-center align-items-center min-vh-100">
                     <div class="card shadow-sm" style="max-width: 800px; width:100%">

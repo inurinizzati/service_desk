@@ -7,146 +7,117 @@
 
 @section('css_after')
     <link href="{{ asset ('metronic/assets/plugins/custom/datatables/datatables.bundle.css')}}" rel="stylesheet" type="text/css" />
+    <style>
+        /* Active page number button (currently blue) → make it purple */
+        .page-item.active .page-link {
+            background-color: #6f42c1 !important; /* Purple */
+            border-color: #6f42c1 !important;
+            color: #fff !important;
+        }
+
+        /* Normal page number buttons (optional, if you also want purple border on hover/normal) */
+        .page-link {
+            color: #6f42c1 !important;
+        }
+
+        .page-link:hover {
+            background-color: #ebe0ff !important; /* light purple hover */
+            color: #6f42c1 !important;
+        }
+    </style>
+
 @endsection
 
 @section('js_after')
     <script src="{{ asset ('metronic/assets/plugins/custom/datatables/datatables.bundle.js')}}"></script>
-    <script src="{{ asset('metronic/js/feedback.js') }}"></script>
+    <script src="{{ asset ('metronic/js/datatable.js')}}"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var table = $('#feedbackTable').DataTable();
+            $.fn.dataTable.ext.search.push(
+                function(settings, data, dataIndex) {
+                    var selected = $('#ratingFilter').val();
+                    var rating = $(table.row(dataIndex).node()).find('td[data-rating]').data('rating');
+
+                    if (selected === "all" || selected == rating) {
+                        return true;
+                    }
+                    return false;
+                }
+            );
+            $('#ratingFilter').on('change', function () {
+                table.draw();
+            });
+        });
+    </script>
 @endsection
 
 @section('content')
 <div id="kt_content_container" class="container-xxl">
-   	<div class="card card-flush">
-		<div class="card-header align-items-center py-5 gap-2 gap-md-5">
-            <div class="card-title">
-                <!--begin::Search-->
-                <div class="d-flex align-items-center position-relative my-1">
-                    <input type="text" class="form-control form-control-solid w-250px ps-14" placeholder="Search..." id="feedbackSearch" />
-                    <i class="ki-duotone ki-magnifier fs-2 position-absolute ms-4">
-                        <span class="path1"></span>
-                        <span class="path2"></span>
-                    </i>
-                </div>
-                <!--end::Search-->
-            </div>
-            <div class="card-toolbar flex-row-fluid justify-content-end gap-5">
-                <div class="d-flex align-items-center position-relative my-1">
-                    <select id="ratingFilter" class="form-select form-select-solid ms-3 w-125px" data-control="select2" data-hide-search="true" data-placeholder="Rating">
-                        <option value="all">All</option>
-                        <option value="rating-5">5 Stars</option>
-                        <option value="rating-4">4 Stars</option>
-                        <option value="rating-3">3 Stars</option>
-                        <option value="rating-2">2 Stars</option>
-                        <option value="rating-1">1 Star</option>
-                    </select>
-                </div>
+    <div class="card shadow-sm">
+        <div class="card-header">
+            <h3 class="card-title">Feedback</h3>
+            <div class="card-toolbar d-flex align-items-center">
+                <select id="ratingFilter" class="form-select form-select-solid w-150px ms-3"data-control="select2" data-hide-search="true" data-placeholder="Rating">
+                    <option value="all">All Ratings</option>
+                    <option value="5">5 Stars</option>
+                    <option value="4">4 Stars</option>
+                    <option value="3">3 Stars</option>
+                    <option value="2">2 Stars</option>
+                    <option value="1">1 Star</option>
+                </select>
             </div>
         </div>
-        <div class="card-body pt-0">
-            <table class="m-datatable table align-middle table-row-dashed fs-6 gy-5">
+        <div class="card-body">
+            <table id="feedbackTable" class="m-datatable table align-middle table-row-dashed fs-6 gy-5">
                 <thead>
-                    <tr class="text-start text-muted fw-bold fs-7 text-uppercase gs-0">
-                        <th class="text-center">Complaint ID</th>
-                        <th class="text-center">Technician ID</th>
-                        <th class="text-center">Name </th>
-                        <th class="text-center" style="width: 150px;" >Rating</th>
-                        <th class="text-center" style="width: 400px;">Comment</th>
-                        {{-- <th >Action</th> --}}
+                    <tr class="text-dark fw-bold fs-7 text-uppercase gs-0">
+                        <th style="width:10%; text-align:left;">Ticket Num</th>
+                        <th style="width:20%; text-align:left;">Student Name</th>
+                        <th style="width:20%; text-align:left;">Technician Name</th>
+                        <th style="width:15%; text-align:leftcenter;">Rating</th>
+                        <th style="width:30%; text-align:left;">Comment</th>
                     </tr>
                 </thead>
-                <tbody class="text-gray-600 fw-semibold">
-                    <!-- Static sample data (frontend only) -->
-                    <tr>
-                        <td class="text-center">#CMP001</td>
-                        <td class="text-center">TECH002</td>
-                        <td class="text-center">SITI NAWWARAH</td>
-                        <td  data-order="rating-5" data-filter="rating-5">
-                            <div class="rating justify-content-center">
-                                <div class="rating-label checked">
-                                    <i class="ki-duotone ki-star fs-2"></i>
+
+               <tbody class="text-black-600 fw-semibold">
+                    @foreach($feedback as $feedbacks)
+                        <tr>
+
+                            <td style="vertical-align: middle; text-align:left;">
+                                {{ $feedbacks->ticket_id }}
+                            </td>
+
+                            <td style="vertical-align: middle; text-align:left;">
+                                {{ $feedbacks->student_name }}
+                            </td>
+
+                            <td style="vertical-align: middle; text-align:left;">
+                                {{ $feedbacks->technician_name }}
+                            </td>
+
+                            <td style="vertical-align: middle; text-align:left;" data-rating="{{ $feedbacks->rating }}">
+                                <div class="rating d-flex justify-content-left" style="gap:4px;">
+                                    @for ($i = 1; $i <= 5; $i++)
+                                        <div class="rating-label {{ $i <= $feedbacks->rating ? 'checked' : '' }}">
+                                            <i class="ki-duotone ki-star fs-2"></i>
+                                        </div>
+                                    @endfor
                                 </div>
-                                <div class="rating-label checked">
-                                    <i class="ki-duotone ki-star fs-2"></i>
-                                </div>
-                                <div class="rating-label checked">
-                                    <i class="ki-duotone ki-star fs-2"></i>
-                                </div>
-                                <div class="rating-label checked">
-                                    <i class="ki-duotone ki-star fs-2"></i>
-                                </div>
-                                <div class="rating-label checked">
-                                    <i class="ki-duotone ki-star fs-2"></i>
-                                </div>
-                            </div>
-                        </td>
-                        <td class="text-center">Very fast service, excellent job!</td>
-                        {{-- <td>
-                            <a href="#" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1" data-bs-toggle="tooltip" title="Edit">
-                                <i class="ki-duotone text-warning ki-notepad-edit fs-2">
-                                    <span class="path1"></span>
-                                    <span class="path2"></span>
-                                </i>
-                            </a>
-                            <a href="#" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm" data-bs-toggle="tooltip" title="Delete">
-                                <i class="ki-duotone text-danger ki-trash fs-2">
-                                    <span class="path1"></span>
-                                    <span class="path2"></span>
-                                    <span class="path3"></span>
-                                    <span class="path4"></span>
-                                    <span class="path5"></span>
-                                </i>
-                            </a>
-                        </td> --}}
-                    </tr>
-                    <tr>
-                        <td class="text-center">#CMP002</td>
-                        <td class="text-center">TECH003</td>
-                        <td class="text-center">NUR AFIQAH</td>
-                        <td class="text-center" data-order="rating-2" data-filter="rating-2">
-                            <div class="rating justify-content-center">
-                                <div class="rating-label checked">
-                                    <i class="ki-duotone ki-star fs-2"></i>
-                                </div>
-                                <div class="rating-label checked">
-                                    <i class="ki-duotone ki-star fs-2"></i>
-                                </div>
-                                <div class="rating-label">
-                                    <i class="ki-duotone ki-star fs-2"></i>
-                                </div>
-                                <div class="rating-label">
-                                    <i class="ki-duotone ki-star fs-2"></i>
-                                </div>
-                                <div class="rating-label">
-                                    <i class="ki-duotone ki-star fs-2"></i>
-                                </div>
-                            </div>
-                        </td>
-                        <td class="text-center">Response was okay but could be faster next time.</td>
-                            {{-- <td>
-                                <a href="#" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1" title="Edit">
-                                    <i class="ki-duotone text-warning ki-notepad-edit fs-2">
-                                        <span class="path1"></span>
-                                        <span class="path2"></span>
-                                    </i>
-                                </a>
-                                <a href="#" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm" title="Delete">
-                                    <i class="ki-duotone text-danger ki-trash fs-2">
-                                        <span class="path1"></span>
-                                        <span class="path2"></span>
-                                        <span class="path3"></span>
-                                        <span class="path4"></span>
-                                        <span class="path5"></span>
-                                    </i>
-                                </a>
-                            </td> --}}
+                            </td>
+
+                            <td style="vertical-align: middle; text-align:left;">
+                                {{ $feedbacks->comment }}
+                            </td>
+
                         </tr>
+                    @endforeach
                 </tbody>
+
             </table>
+
         </div>
-
     </div>
-
-
 </div>
 
 @endsection

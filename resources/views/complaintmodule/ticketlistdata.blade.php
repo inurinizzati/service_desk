@@ -4,7 +4,6 @@
 
 @section('page-header',  'Ticket List')
 
-{{-- @section('breadcrumbs',  Breadcrumbs::render('penceramah') ) --}}
 
 @section('css_after')
     <link href="{{ asset ('metronic/assets/plugins/custom/datatables/datatables.bundle.css')}}" rel="stylesheet" type="text/css" />
@@ -100,9 +99,7 @@
                                         </span>
                                     @else
                                         {{-- Not yet rated - show link as button --}}
-                                        <a href="#"
-                                        class="btn btn-sm btn-info fs-6"
-                                        onclick="event.stopPropagation();">
+                                        <a href={{ route('feedback.create', $ticket->id) }}class="btn btn-sm btn-info fs-6" onclick="event.stopPropagation();">
                                             {{-- <i class="ki-duotone ki-star fs-4">
                                                 <span class="path1"></span>
                                                 <span class="path2"></span>

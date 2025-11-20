@@ -14,40 +14,136 @@
                             <div class="menu-content">
                                 <span class="menu-heading fw-bold text-uppercase fs-7">Menu</span>
                             </div>
+                            <!-- Dashboard Admin Section -->
                             <div class="menu-item">
-                                <a class="menu-link {{ request()->routeIs('feedback.index') ? ' active' : '' }}"
-                                    href="{{ route('feedback.index') }}">
+                                <a class="menu-link {{ request()->routeIs('#') ? ' active' : '' }}"
+                                    href="#">
                                     <span class="menu-icon">
-                                        <i class="ki-duotone ki-star fs-2">
-                                        </i>
-                                    </span>
-                                    <span class="menu-title fw-semibold">Feedback</span>
-                                </a>
-                            </div>
-                            <div class="menu-item">
-                                <a class="menu-link {{ request()->routeIs('feedback.index_admin') ? ' active' : '' }}"
-                                    href="{{ route('feedback.index_admin') }}">
-                                    <span class="menu-icon">
-                                        <i class="ki-duotone ki-medal-star fs-2">
+                                        <i class="ki-duotone ki-element-11 fs-2">
                                             <span class="path1"></span>
                                             <span class="path2"></span>
                                             <span class="path3"></span>
                                             <span class="path4"></span>
                                         </i>
                                     </span>
+                                    <span class="menu-title fw-semibold">Dashboard</span>
+                                </a>
+                            </div>
+
+                            <!-- Dashboard Technian Section -->
+                            <div class="menu-item">
+                                <a class="menu-link {{ request()->routeIs('#') ? ' active' : '' }}"
+                                    href="#">
+                                    <span class="menu-icon">
+                                        <i class="ki-duotone ki-element-11 fs-2">
+                                            <span class="path1"></span>
+                                            <span class="path2"></span>
+                                            <span class="path3"></span>
+                                            <span class="path4"></span>
+                                        </i>
+                                    </span>
+                                    <span class="menu-title fw-semibold">Dashboard</span>
+                                </a>
+                            </div>
+
+                            <!-- Dashboard Student Section -->
+                            <div class="menu-item">
+                                <a class="menu-link {{ request()->routeIs('#') ? ' active' : '' }}"
+                                    href="#">
+                                    <span class="menu-icon">
+                                        <i class="ki-duotone ki-element-11 fs-2">
+                                            <span class="path1"></span>
+                                            <span class="path2"></span>
+                                            <span class="path3"></span>
+                                            <span class="path4"></span>
+                                        </i>
+                                    </span>
+                                    <span class="menu-title fw-semibold">Dashboard</span>
+                                </a>
+                            </div>
+
+                            <!-- Ticket List Student Section -->
+                            <div class="menu-item">
+                                <a class="menu-link {{ request()->routeIs('ticket.list') ? ' active' : '' }}"
+                                    href="{{ route('ticket.list') }}">
+                                    <span class="menu-icon">
+                                        <i class="ki-duotone ki-directbox-default fs-2">
+                                            <span class="path1"></span>
+                                            <span class="path2"></span>
+                                            <span class="path3"></span>
+                                            <span class="path4"></span>
+                                        </i>
+                                    </span>
+                                    <span class="menu-title fw-semibold">Ticket list</span>
+                                </a>
+                            </div>
+
+                            <!-- Ticket List Technian Section -->
+                            <div class="menu-item">
+                                <a class="menu-link {{ request()->routeIs('#') ? ' active' : '' }}"
+                                    href="#">
+                                    <span class="menu-icon">
+                                        <i class="ki-duotone ki-office-bag fs-2">
+                                            <span class="path1"></span>
+                                            <span class="path2"></span>
+                                            <span class="path3"></span>
+                                            <span class="path4"></span>
+                                        </i>
+                                    </span>
+                                    <span class="menu-title fw-semibold">Ticket list</span>
+                                </a>
+                            </div>
+
+                            <!-- Feedback Student Section -->
+                            <div class="menu-item">
+                                <a class="menu-link {{ request()->routeIs('feedback.index') ? ' active' : '' }}"
+                                    href="{{ route('feedback.index') }}">
+                                    <span class="menu-icon">
+                                        <i class="ki-duotone ki-star fs-2"> </i>
+                                    </span>
                                     <span class="menu-title fw-semibold">Feedback</span>
                                 </a>
                             </div>
+
+                            <!-- Feedback Admin Section -->
+                            <div class="menu-item">
+                                <a class="menu-link {{ request()->routeIs('feedback.index_admin') ? ' active' : '' }}"
+                                    href="{{ route('feedback.index_admin') }}">
+                                    <span class="menu-icon">
+                                        <i class="ki-duotone ki-star fs-2"> </i>
+                                    </span>
+                                    <span class="menu-title fw-semibold">Feedback</span>
+                                </a>
+                            </div>
+
+                            <!-- Feedback Technian Section -->
                             <div class="menu-item">
                                 <a class="menu-link {{ request()->routeIs('feedback.index_technian') ? ' active' : '' }}"
                                     href="{{ route('feedback.index_technian') }}">
                                     <span class="menu-icon">
-                                        <i class="ki-duotone ki-message-minus fs-2">
-                                            <span class="path1"></span>
-                                            <span class="path2"></span>
-                                        </i>
+                                        <i class="ki-duotone ki-star fs-2"> </i>
                                     </span>
                                     <span class="menu-title fw-semibold">Feedback</span>
+                                </a>
+                            </div>
+
+                            <!-- User Account Section -->
+                            <div class="menu-item pt-5">
+                                <div class="menu-content">
+                                    <span class="menu-heading fw-bold text-uppercase fs-7">User Account </span>
+                                </div>
+                            </div>
+                            <div class="menu-item">
+                                <a class="menu-link {{ request()->routeIs('#') ? ' active' : '' }}"
+                                    href="#">
+                                    <span class="menu-icon">
+                                        <i class="ki-duotone ki-profile-circle fs-2">
+                                            <span class="path1"></span>
+                                            <span class="path2"></span>
+                                            <span class="path3"></span>
+                                        </i>
+                                    </span>
+                                    <span class="menu-title fw-semibold">Profile</span>
                                 </a>
                             </div>
                         </div>
