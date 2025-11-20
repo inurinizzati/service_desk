@@ -8,10 +8,10 @@ use App\Http\Controllers\AdminUserController;   // Admin routes for user managem
 use App\Models\Role;
 
 // Dashboard route: shows a list of up to 50 users (admin user list)
-Route::get('/dashboard', function () {
+Route::get('/userlist', function () {
     $users = \App\Models\User::limit(50)->get(); // or ->all()
     return view('user_management.admin.admin_user_list', compact('users'));
-})->middleware(['auth', 'verified'])->name('dashboard');
+})->middleware(['auth', 'verified'])->name('userlist');
 
 // Group admin user management routes with middleware and prefix for clarity and maintainability
 Route::middleware(['auth', 'verified'])->prefix('admin')->group(function () {
@@ -58,9 +58,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// Route::get('/dashboard', function () {
-//     return view('dashboard');
-// })->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

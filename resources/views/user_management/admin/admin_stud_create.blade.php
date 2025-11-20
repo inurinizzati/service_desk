@@ -39,7 +39,7 @@
             <div class="card-header d-flex align-items-center justify-content-between">
                 <h3 class="card-title">Create New User</h3>
                 <div class="card-toolbar">
-                    <a href="{{ route('dashboard') }}" class="btn btn-sm btn-light">
+                    <a href="{{ route('userlist') }}" class="btn btn-sm btn-light">
                         <i class="ki-duotone ki-arrow-left fs-2">
                             <span class="path1"></span>
                             <span class="path2"></span>
@@ -220,7 +220,7 @@
 
                     <!-- Form Actions -->
                     <div class="d-flex justify-content-end gap-2">
-                        <a href="{{ route('dashboard') }}" class="btn btn-light">Cancel</a>
+                        <a href="{{ route('userlist') }}" class="btn btn-light">Cancel</a>
                         <button type="submit" class="btn btn-primary">
                             <i class="ki-duotone ki-check fs-2">
                                 <span class="path1"></span>
