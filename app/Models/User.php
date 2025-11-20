@@ -55,6 +55,7 @@ class User extends Authenticatable
         'userid',
         'name',
         'email',
+        'student_id',
         'password',
         'role_id',
         'is_active',

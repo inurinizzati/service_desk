@@ -99,6 +99,20 @@
                             @enderror
                         </div>
 
+                        <!-- Student ID -->
+                        <div class="col-md-6 mb-5">
+                            <label for="student_id" class="form-label required">Student ID</label>
+                            <input type="text"
+                                   class="form-control @error('student_id') is-invalid @enderror"
+                                   id="student_id"
+                                   name="student_id"
+                                   value="{{ old('student_id') }}"
+                                   required>
+                            @error('student_id')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+
                         <!-- Password -->
                         <div class="col-md-6 mb-5">
                             <label for="password" class="form-label required">Password</label>
