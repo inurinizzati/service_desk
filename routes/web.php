@@ -1,22 +1,48 @@
 <?php
-use App\Http\Controllers\TicketController;
-use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AdminTicketController;
 use App\Http\Controllers\TechnicianTicketController;
+use App\Http\Controllers\FeedbackController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\TicketController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+// Route::get('/', function () {
+//     return Auth::check()
+//         ? redirect('/dashboard')
+//         : redirect('/login');
+// });
+
+
+Route::redirect('/', '/dashboard');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
+
+    //feedback
+    Route::prefix('feedback')->name('feedback.')->group(function () {
+        Route::get('/index', [FeedbackController::class, 'index'])->name('index');
+        Route::get('/Admin', [FeedbackController::class, 'index_admin'])->name('index_admin');
+        Route::get('/technian', [FeedbackController::class, 'index_technian'])->name('index_technian');
+        Route::get('/create', [FeedbackController::class, 'create'])->name('create');
+        Route::post('/save', [FeedbackController::class, 'store'])->name('save');
+
+    });
+
+
+
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+
 });
 
 
