@@ -49,8 +49,8 @@
                 </div>
 
                 <div class="text-end">
-                    <a href="{{ route('technician.ticket.list') }}" class="btn btn-secondary">Cancel</a>
-                    <button type="submit" class="btn btn-primary">Update Ticket</button>
+                    <a href="{{ route('technician.ticket.list') }}" class="btn btn-light me-3">Cancel</a>
+                    <button type="submit" class="btn btn-sm btn-info fs-6">Update Ticket</button>
                 </div>
             </form>
         </div>

@@ -28,6 +28,25 @@ function openAssignModal(ticketId, status) {
             <h3 class="card-title">Ticket List (Admin)</h3>
         </div>
         <div class="card-body">
+            <style>
+                /* Active page number button (currently blue) → make it purple */
+                .page-item.active .page-link {
+                    background-color: #7239EA !important; /* Purple */
+                    border-color: #7239EA !important;
+                    color: #fff !important;
+                }
+
+                /* Normal page number buttons */
+                .page-link {
+                    color: #7239EA !important;
+                }
+
+                .page-link:hover {
+                    background-color: #ebe0ff !important; /* light purple hover */
+                    color: #7239EA !important;
+                }
+            </style>
+
             <table class="m-datatable table align-middle table-row-dashed fs-6 gy-5">
                 <thead>
                     <tr class="text-start text-dark fw-bold fs-7 text-uppercase gs-0">
@@ -35,6 +54,7 @@ function openAssignModal(ticketId, status) {
                         <th>Student ID</th>
                         <th>Title</th>
                         <th>Category</th>
+                        <th>Technician</th> <!-- New Column -->
                         <th>Date</th>
                         <th>Resolved Date</th>
                         <th class="text-start">Status</th>
@@ -53,6 +73,16 @@ function openAssignModal(ticketId, status) {
                                 <div class="text-muted" style="font-size: 12px;">Location: {{ $ticket->location }}</div>
                             </td>
                             <td>{{ $ticket->category }}</td>
+
+                            <!-- Technician Column -->
+                            <td>
+                                @if(isset($ticket->technician_name))
+                                    {{ $ticket->technician_name }}
+                                @else
+                                    <span class="text-muted">Not Assigned</span>
+                                @endif
+                            </td>
+
                             <td>{{ $ticket->date }}</td>
                             <td>
                                 @if($ticket->status == 'Completed' && isset($ticket->resolved_date))
@@ -72,7 +102,7 @@ function openAssignModal(ticketId, status) {
                             </td>
                             <td class="text-start">
                                 <button
-                                    class="btn btn-sm btn-primary fs-6 {{ $ticket->status != 'Pending' ? 'disabled' : '' }}"
+                                    class="btn btn-sm btn-info fs-6 {{ $ticket->status != 'Pending' ? 'disabled' : '' }}"
                                     onclick="openAssignModal('{{ $ticket->id }}','{{ $ticket->status }}');">
                                     Assign
                                 </button>
@@ -105,8 +135,8 @@ function openAssignModal(ticketId, status) {
                     </select>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary">Assign</button>
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-sm btn-info fs-6">Assign</button>
+                    <button type="button" class="btn btn-secondary fs-6" data-bs-dismiss="modal">Cancel</button>
                 </div>
             </div>
         </form>
