@@ -25,9 +25,13 @@ Route::redirect('/', '/dashboard');
 //     return view('dashboard');
 // })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/dashboard', [DashboardController::class, 'index'])
+Route::get('/dashboardadmin', [DashboardController::class, 'index'])
     ->middleware(['auth', 'verified'])
     ->name('dashboard');
+
+Route::get('/dashboard', [DashboardController::class, 'student']) //for student and technician dashboard
+    ->middleware(['auth', 'verified'])
+    ->name('dashboard.student');
 
 Route::middleware('auth')->group(function () {
 
