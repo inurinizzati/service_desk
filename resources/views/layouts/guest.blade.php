@@ -18,7 +18,7 @@
                 font-family: 'Inter', sans-serif;
                 min-height: 100vh;
                 margin: 0;
-                background: radial-gradient(circle at top, #f0e8ff 0%, #f8f7ff 40%, #ffffff 80%);
+                background: radial-gradient(circle at top,rgb(255, 255, 255) 0%, #f8f7ff 40%, #ffffff 80%);
                 color: #1f1f1f;
             }
             .auth-wrapper {
@@ -35,15 +35,6 @@
                 border-radius: 1.25rem;
                 box-shadow: 0 30px 60px rgba(111, 66, 193, 0.15);
                 padding: 2.5rem 2.75rem;
-            }
-            .auth-brand {
-                text-align: center;
-                margin-bottom: 1.5rem;
-            }
-            .auth-brand .logo-text {
-                font-size: 1.25rem;
-                font-weight: 700;
-                color: #6f42c1;
             }
             .auth-title {
                 font-size: 1.5rem;
@@ -85,16 +76,22 @@
             .auth-link:hover {
                 text-decoration: underline;
             }
+            .btn-primary {
+                background-color: #6f42c1;
+                border: none;
+                border-radius: .9rem;
+                font-weight: 600;
+                box-shadow: 0 12px 24px rgba(111, 66, 193, 0.25);
+            }
+            .btn-primary:hover {
+                background-color: #5a2db8;
+            }
         </style>
         @stack('styles')
     </head>
     <body>
         <div class="auth-wrapper">
             <div class="auth-card">
-            <div class="auth-brand">
-                <span class="logo-text">{{ config('app.name', 'Service Desk') }}</span>
-            </div>
-
                 {{ $slot }}
             </div>
         </div>
