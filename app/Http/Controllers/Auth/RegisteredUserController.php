@@ -35,10 +35,19 @@ class RegisteredUserController extends Controller
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
+        // Get the Student role
+        $studentRole = \App\Models\Role::where('slug', 'student')->first();
+        
+        if (!$studentRole) {
+            return back()->withErrors(['role' => 'Student role not found. Please contact administrator.']);
+        }
+
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'role_id' => $studentRole->id, // Default to Student
+            'is_active' => true, // Default to Active
         ]);
 
         event(new Registered($user));

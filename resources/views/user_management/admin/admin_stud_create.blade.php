@@ -50,6 +50,12 @@
             </div>
 
             <div class="card-body">
+                <!-- UserID Display (Auto-generated) -->
+                <div class="alert alert-info mb-5">
+                    <i class="fas fa-info-circle"></i>
+                    <strong>Note:</strong> UserID will be automatically generated when the student is created.
+                </div>
+
                 @if ($errors->any())
                     <div class="alert alert-danger">
                         <ul class="mb-0">
@@ -116,34 +122,17 @@
                                    required>
                         </div>
 
-                        <?php
-                            // Get the role from the old input (on validation failure) or the URL query parameter 'role'
-                            $selectedRole = old('role', request()->query('role'));
+                        <!-- Role (Hidden, defaults to STUDENT) -->
+                        <input type="hidden" name="role" value="STUDENT">
 
-                            // Define display text based on the value (for the visible field)
-                            $roleDisplay = match (strtoupper($selectedRole)) {
-                                'STUDENT' => 'Student',
-                                'TECHNICIAN' => 'Technician',
-                                default => 'Role Not Set',
-                            };
-                        ?>
-                        <!-- Role -->
+                        <!-- Role Display (Read-only) -->
                         <div class="col-md-6 mb-5">
-                            <label for="role" class="form-label required">Role</label>
-
+                            <label for="role_display" class="form-label required">Role</label>
                             <input type="text"
                                 class="form-control"
-                                value="{{ $roleDisplay }}"
+                                value="Student"
                                 readonly
                                 disabled>
-
-                            <input type="hidden"
-                                name="role"
-                                value="{{ strtoupper($selectedRole) }}">
-
-                            @error('role')
-                                <div class="invalid-feedback d-block">{{ $message }}</div>
-                            @enderror
                         </div>
 
                         <!-- Phone Number -->
@@ -159,63 +148,18 @@
                             @enderror
                         </div>
 
-                        <!-- Status -->
-                        <div class="col-md-6 mb-5">
-                            <label for="status" class="form-label required">Status</label>
+                        <!-- Status (Hidden, defaults to ACTIVE) -->
+                        <input type="hidden" name="status" value="ACTIVE">
 
+                        <!-- Status Display (Read-only) -->
+                        <div class="col-md-6 mb-5">
+                            <label for="status_display" class="form-label required">Status</label>
                             <input type="text"
                                 class="form-control"
                                 value="Active"
                                 readonly
                                 disabled>
-
-                            <input type="hidden"
-                                name="is_active"
-                                value="1">
-
-                            @error('is_active')
-                                <div class="invalid-feedback d-block">{{ $message }}</div>
-                            @enderror
                         </div>
-                        
-                        <!-- With active or inavtive option
-                        <div class="col-md-6 mb-5">
-                            <label for="status" class="form-label required">Status</label>
-                            <select class="form-select @error('is_active') is-invalid @enderror"
-                                    id="is_active"
-                                    name="is_active"
-                                    required>
-                                <option value="">Select Status</option>
-                                <option value="1" {{ old('is_active') == '1' ? 'selected' : '' }}>Active</option>
-                                <option value="0" {{ old('is_active') == '0' ? 'selected' : '' }}>Inactive</option>
-                            </select>
-                            @error('status')
-                                <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
-                        </div>
-                        -->
-
-                        <!-- Hostel (only for STUDENT role) -->
-                        <!--
-                        <div class="col-md-6 mb-5" id="hostel_field" style="display: none;">
-                            <label for="hostel_id" class="form-label">Hostel</label>
-                            <select class="form-select @error('hostel_id') is-invalid @enderror"
-                                    id="hostel_id"
-                                    name="hostel_id">
-                                <option value="">Select Hostel (Optional)</option>
-                                @if(isset($hostels) && $hostels->count() > 0)
-                                    @foreach($hostels as $hostel)
-                                        <option value="{{ $hostel->hostel_id }}" {{ old('hostel_id') == $hostel->hostel_id ? 'selected' : '' }}>
-                                            {{ $hostel->name ?? 'Hostel #' . $hostel->hostel_id }}
-                                        </option>
-                                    @endforeach
-                                @endif
-                            </select>
-                            @error('hostel_id')
-                                <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
-                            <div class="form-text">Optional - Only applicable for students</div>
-                        </div>-->
                     </div>
 
                     <!-- Form Actions -->
