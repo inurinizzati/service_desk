@@ -186,6 +186,7 @@ Website: https://service_desk.com
 		<script src="{{ asset ('metronic/assets/plugins/global/plugins.bundle.js')}}"></script>
 		<script src="{{ asset ('metronic/assets/js/scripts.bundle.js')}}"></script>
         @yield('js_after')
+        @yield('scripts')
 		{{-- <script src="https://unpkg.com/sweetalert2@11.9.0/dist/sweetalert2.all.js"></script> --}}
         @include('sweetalert::alert')
 	</body>
