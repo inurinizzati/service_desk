@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 use App\Http\Controllers\AdminUserController;   // Admin routes for user management
+use App\Http\Controllers\UserProfileController;
 use App\Models\Role;
 
 // Dashboard route: shows a list of up to 50 users (admin user list)
@@ -66,6 +67,14 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    // Student profile
+    Route::get('/student/profile', [UserProfileController::class, 'editStudent'])->name('student.profile.edit');
+    Route::patch('/student/profile', [UserProfileController::class, 'updateStudent'])->name('student.profile.update');
+
+    // Technician profile
+    Route::get('/technician/profile', [UserProfileController::class, 'editTechnician'])->name('technician.profile.edit');
+    Route::patch('/technician/profile', [UserProfileController::class, 'updateTechnician'])->name('technician.profile.update');
 });
 
 
