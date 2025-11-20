@@ -32,19 +32,31 @@ class RegisteredUserController extends Controller
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
+            'student_id' => ['required', 'string', 'max:255', 'unique:users,student_id'], // Add this validation
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
+
+        // Get the Student role
+        $studentRole = \App\Models\Role::where('slug', 'student')->first();
+        
+        if (!$studentRole) {
+            return back()->withErrors(['role' => 'Student role not found. Please contact administrator.']);
+        }
 
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
+            'student_id' => $request->student_id, // Add this line
             'password' => Hash::make($request->password),
+            'role_id' => $studentRole->id, // Default to Student
+            'is_active' => true, // Default to Active
         ]);
 
         event(new Registered($user));
 
-        Auth::login($user);
+        event(new Registered($user));
 
-        return redirect(route('dashboard', absolute: false));
+        return redirect()->route('login')
+            ->with('status', 'Account registered successfully. Please log in.');
     }
 }
