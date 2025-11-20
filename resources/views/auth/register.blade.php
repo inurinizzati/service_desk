@@ -1,76 +1,65 @@
 <x-guest-layout>
-    <form method="POST" action="{{ route('register') }}">
+    <div class="auth-title">Create Account</div>
+    <div class="auth-subtitle">Register to start managing your tickets.</div>
+
+    <form method="POST" action="{{ route('register') }}" class="auth-form">
         @csrf
 
-        <!-- UserID (Auto-generated, display only) -->
-        <div>
-            <x-input-label for="userid" :value="__('UserID')" />
-            <x-text-input id="userid" 
-                         class="block mt-1 w-full bg-gray-100" 
-                         type="text" 
-                         name="userid" 
-                         value="Will be generated automatically" 
-                         readonly 
-                         disabled />
-            <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
-                Your UserID will be automatically generated after registration.
-            </p>
+        <div class="mb-4">
+            <label class="form-label">User ID</label>
+            <input type="text" class="form-control bg-light" value="Generated automatically" readonly>
+            <small class="text-muted">Your UserID will be generated after registration.</small>
         </div>
 
-        <!-- Name -->
-        <div class="mt-4">
-            <x-input-label for="name" :value="__('Name')" />
-            <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
-            <x-input-error :messages="$errors->get('name')" class="mt-2" />
+        <div class="mb-4">
+            <label for="name" class="form-label required">Full Name</label>
+            <input id="name" type="text" class="form-control @error('name') is-invalid @enderror"
+                   name="name" value="{{ old('name') }}" required autofocus autocomplete="name">
+            @error('name')
+                <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
         </div>
 
-        <!-- Email Address -->
-        <div class="mt-4">
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autocomplete="username" />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
+        <div class="mb-4">
+            <label for="email" class="form-label required">Email</label>
+            <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
+                   name="email" value="{{ old('email') }}" required autocomplete="username">
+            @error('email')
+                <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
         </div>
 
-        <!-- Student ID -->
-        <div class="mt-4">
-            <x-input-label for="student_id" :value="__('Student ID')" />
-            <x-text-input id="student_id" 
-                        class="block mt-1 w-full" 
-                        type="text" 
-                        name="student_id" 
-                        :value="old('student_id')" 
-                        required 
-                        autocomplete="off"
-                        placeholder="Enter your Student ID" />
-            <x-input-error :messages="$errors->get('student_id')" class="mt-2" />
+        <div class="mb-4">
+            <label for="student_id" class="form-label required">Student ID</label>
+            <input id="student_id" type="text" class="form-control @error('student_id') is-invalid @enderror"
+                   name="student_id" value="{{ old('student_id') }}" required placeholder="e.g. STU12345">
+            @error('student_id')
+                <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
         </div>
 
-        <!-- Password -->
-        <div class="mt-4">
-            <x-input-label for="password" :value="__('Password')" />
-            <x-text-input id="password" class="block mt-1 w-full"
-                            type="password"
-                            name="password"
-                            required autocomplete="new-password" />
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
+        <div class="mb-4">
+            <label for="password" class="form-label required">Password</label>
+            <input id="password" type="password" class="form-control @error('password') is-invalid @enderror"
+                   name="password" required autocomplete="new-password">
+            @error('password')
+                <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
         </div>
 
-        <!-- Confirm Password -->
-        <div class="mt-4">
-            <x-input-label for="password_confirmation" :value="__('Confirm Password')" />
-            <x-text-input id="password_confirmation" class="block mt-1 w-full"
-                            type="password"
-                            name="password_confirmation" required autocomplete="new-password" />
+        <div class="mb-4">
+            <label for="password_confirmation" class="form-label required">Confirm Password</label>
+            <input id="password_confirmation" type="password" class="form-control"
+                   name="password_confirmation" required autocomplete="new-password">
         </div>
 
-        <div class="flex items-center justify-end mt-4">
-            <a class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800" href="{{ route('login') }}">
-                {{ __('Already registered?') }}
-            </a>
-
-            <x-primary-button class="ms-4">
-                {{ __('Register') }}
-            </x-primary-button>
-        </div>
+        <button type="submit" class="btn btn-primary w-100 py-3">
+            Create Account
+        </button>
     </form>
+
+    <div class="auth-footer">
+        Already have an account?
+        <a href="{{ route('login') }}" class="auth-link">Log in</a>
+    </div>
 </x-guest-layout>
