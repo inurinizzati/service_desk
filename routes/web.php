@@ -8,10 +8,10 @@ use App\Http\Controllers\AdminUserController;   // Admin routes for user managem
 use App\Models\Role;
 
 // Dashboard route: shows a list of up to 50 users (admin user list)
-Route::get('/userlist', function () {
-    $users = \App\Models\User::limit(50)->get(); // or ->all()
-    return view('user_management.admin.admin_user_list', compact('users'));
-})->middleware(['auth', 'verified'])->name('userlist');
+Route::get('/userlist', [AdminUserController::class, 'index'])->middleware(['auth', 'verified'])->name('userlist');
+
+// Add export route
+Route::get('/admin/users/export', [AdminUserController::class, 'export'])->middleware(['auth', 'verified'])->name('admin.users.export');
 
 // Group admin user management routes with middleware and prefix for clarity and maintainability
 Route::middleware(['auth', 'verified'])->prefix('admin')->group(function () {

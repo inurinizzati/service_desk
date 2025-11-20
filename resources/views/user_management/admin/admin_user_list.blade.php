@@ -14,34 +14,72 @@
 
     <script>
         $(document).ready(function() {
-            $('#users-table').DataTable({
+            // Initialize DataTable with search functionality
+            var table = $('#users-table').DataTable({
                 responsive: true,
                 pageLength: 25,
                 columnDefs: [
                     { orderable: false, targets: -1 } // disable ordering on actions column
-                ]
+                ],
+                dom: 'rtip', // Remove default search box since we're using custom search
             });
-        });
 
-        // confirm delete (reuse existing Swal pattern)
-        $(document).on('click', '.delete-data', function(e){
-            e.preventDefault();
+            // Custom search functionality
+            var searchInput = $('input[data-kt-user-table-filter="search"]');
+            var searchTimeout;
 
-            Swal.fire({
-            title: 'Warning!',
-            text: 'Click Continue to delete this data.',
-            icon: 'warning',
-            confirmButtonText: 'Continue',
-            showCancelButton: true,
-            cancelButtonText: 'Cancel',
-            customClass: {
-                confirmButton: "btn btn-primary",
-                cancelButton: "btn btn-danger",
+            searchInput.on('keyup', function() {
+                clearTimeout(searchTimeout);
+                var value = $(this).val();
+                
+                searchTimeout = setTimeout(function() {
+                    // Use DataTable search
+                    table.search(value).draw();
+                }, 300); // Debounce search
+            });
+
+            // Export button functionality
+            $('#export-btn').on('click', function() {
+                var searchValue = searchInput.val();
+                var roleFilter = new URLSearchParams(window.location.search).get('role');
+                
+                var exportUrl = '{{ route("admin.users.export") }}';
+                var params = new URLSearchParams();
+                
+                if (searchValue) {
+                    params.append('search', searchValue);
                 }
-            }).then((result) => {
-                if (result.value) {
-                    window.location.href = $(this).attr("href");
+                if (roleFilter) {
+                    params.append('role', roleFilter);
                 }
+                
+                if (params.toString()) {
+                    exportUrl += '?' + params.toString();
+                }
+                
+                window.location.href = exportUrl;
+            });
+
+            // Confirm delete (existing code)
+            $(document).on('click', '.delete-data', function(e){
+                e.preventDefault();
+
+                Swal.fire({
+                    title: 'Warning!',
+                    text: 'Click Continue to delete this data.',
+                    icon: 'warning',
+                    confirmButtonText: 'Continue',
+                    showCancelButton: true,
+                    cancelButtonText: 'Cancel',
+                    customClass: {
+                        confirmButton: "btn btn-primary",
+                        cancelButton: "btn btn-danger",
+                    }
+                }).then((result) => {
+                    if (result.value) {
+                        window.location.href = $(this).attr("href");
+                    }
+                });
             });
         });
     </script>
@@ -66,15 +104,28 @@
                 </div>
                 <div class="card-toolbar">
                     <div class="d-flex justify-content-end" data-kt-user-table-toolbar="base">
-                        <button type="button" class="btn btn-light-primary me-3">
-                            <span class="svg-icon svg-icon-2">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                    <path d="M19.0759 3H4.92406C4.4001 3 4.02406 3.4001 4.02406 3.92406V4.02406C4.02406 4.45186 4.19827 4.85506 4.49101 5.1478L9.21303 9.86983C9.50576 10.1626 9.67997 10.5657 9.67997 11V17.0759C9.67997 17.5133 9.94593 17.9238 10.3686 18.1166L14.3686 20.1166C15.0163 20.4409 15.7728 19.9351 15.7728 19.2V11C15.7728 10.5657 15.947 10.1626 16.2397 9.86983L20.9617 5.1478C21.2545 4.85506 21.4287 4.45186 21.4287 4.02406V3.92406C21.4287 3.4001 21.0526 3 20.5287 3H19.0759Z" fill="currentColor" />
-                                </svg>
-                            </span>
-                            Filter
-                        </button>
-                        <button type="button" class="btn btn-light-primary me-3">
+                        <!-- Filter Button -->
+                        <div class="dropdown">
+                            <button type="button" class="btn btn-light-primary me-3 dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                <span class="svg-icon svg-icon-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                        <path d="M19.0759 3H4.92406C4.4001 3 4.02406 3.4001 4.02406 3.92406V4.02406C4.02406 4.45186 4.19827 4.85506 4.49101 5.1478L9.21303 9.86983C9.50576 10.1626 9.67997 10.5657 9.67997 11V17.0759C9.67997 17.5133 9.94593 17.9238 10.3686 18.1166L14.3686 20.1166C15.0163 20.4409 15.7728 19.9351 15.7728 19.2V11C15.7728 10.5657 15.947 10.1626 16.2397 9.86983L20.9617 5.1478C21.2545 4.85506 21.4287 4.45186 21.4287 4.02406V3.92406C21.4287 3.4001 21.0526 3 20.5287 3H19.0759Z" fill="currentColor" />
+                                    </svg>
+                                </span>
+                                Filter
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="{{ route('userlist') }}">All Roles</a></li>
+                                @foreach($roles as $role)
+                                    <li>
+                                        <a class="dropdown-item" href="{{ route('userlist', ['role' => $role->slug]) }}">
+                                            {{ $role->name }}
+                                        </a>
+                                    </li>
+                                @endforeach
+                            </ul>
+                        </div>
+                        <button type="button" class="btn btn-light-primary me-3" id="export-btn">
                             <span class="svg-icon svg-icon-2">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                                     <rect opacity="0.3" x="12.75" y="4.25" width="12" height="2" rx="1" transform="rotate(90 12.75 4.25)" fill="currentColor" />
