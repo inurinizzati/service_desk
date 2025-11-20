@@ -78,10 +78,25 @@
                                 </a>
                             </div>
 
+                            <!-- Ticket List Admin Section -->
+                            <div class="menu-item">
+                                <a class="menu-link {{ request()->routeIs('admin.ticket.list') ? ' active' : '' }}"
+                                    href="{{ route('admin.ticket.list') }}">
+                                    <span class="menu-icon">
+                                        <i class="ki-duotone ki-office-bag fs-2">
+                                            <span class="path1"></span>
+                                            <span class="path2"></span>
+                                            <span class="path3"></span>
+                                            <span class="path4"></span>
+                                        </i>
+                                    </span>
+                                    <span class="menu-title fw-semibold">Ticket list</span>
+                                </a>
+                            </div>
                             <!-- Ticket List Technian Section -->
                             <div class="menu-item">
-                                <a class="menu-link {{ request()->routeIs('#') ? ' active' : '' }}"
-                                    href="#">
+                                <a class="menu-link {{ request()->routeIs('technician.ticket.list') ? ' active' : '' }}"
+                                    href="{{ route('technician.ticket.list') }}">
                                     <span class="menu-icon">
                                         <i class="ki-duotone ki-office-bag fs-2">
                                             <span class="path1"></span>
