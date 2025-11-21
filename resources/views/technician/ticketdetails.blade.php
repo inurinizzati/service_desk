@@ -60,9 +60,9 @@
         </div>
 
         <div class="card-footer text-end">
-            <a href="{{ route('technician.ticket.list') }}" class="btn btn-sm btn-info fs-6">Back</a>
+            <a href="{{ route('technician.ticket.list') }}" class="btn btn-light me-3">Back</a>
             <a href="{{ route('technician.ticket.update', $ticket->id) }}"
-               class="btn btn-primary fs-6">
+               class="btn btn-sm btn-info fs-6">
                Update
             </a>
         </div>

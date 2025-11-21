@@ -67,9 +67,10 @@
         <div class="card-footer text-end">
             <a href="{{ route('admin.ticket.list') }}" class="btn btn-sm btn-info fs-6">Back</a>
             <button
-                class="btn btn-primary fs-6 {{ $ticket->status != 'Pending' ? 'disabled' : '' }}"
+                class="btn btn-sm btn-info fs-6 {{ $ticket->status != 'Pending' ? 'disabled' : '' }}"
                 data-bs-toggle="modal"
-                data-bs-target="#assignModal">
+                data-bs-target="#
+                Modal">
                 Assign
             </button>
         </div>
@@ -96,8 +97,8 @@
                     </select>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary">Assign</button>
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-sm btn-info fs-6">Assign</button>
+                    <button type="button" class="btn btn-sm btn-secondary fs-6" data-bs-dismiss="modal">Cancel</button>
                 </div>
             </div>
         </form>

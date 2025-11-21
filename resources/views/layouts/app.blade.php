@@ -23,11 +23,112 @@ Website: https://service_desk.com
 		<meta property="og:title" content="Service Desk" />
 		<meta property="og:url" content="https://service_desk.com" />
 		<meta property="og:site_name" content="G9" />
-		{{-- <link rel="shortcut icon" href="{{ asset ('metronic/assets/media/logoservicedesk.png')}}" /> --}}
+		<link rel="shortcut icon" href="{{ asset ('metronic/assets/media/logoservicedesk.png')}}" />
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,400,500,600,700" />
         @yield('css_after')
 		<link href="{{ asset ('metronic/assets/plugins/global/plugins.bundle.css')}}" rel="stylesheet" type="text/css" />
 		<link href="{{ asset ('metronic/assets/css/style.bundle.css')}}" rel="stylesheet" type="text/css" />
+        <style>
+        /* =============================
+        USM COLOR VARIABLES
+        ==============================*/
+        :root {
+            --usm-purple: #5A2D82;       /* Sidebar */
+            --usm-purple-light: #3D1A52; /* Header */
+        }
+
+        /* =============================
+        SIDEBAR (LEFT ASIDE)
+        ==============================*/
+        #kt_aside {
+            background-color: var(--usm-purple) !important;
+        }
+
+        /* Sidebar menu links */
+        #kt_aside .menu .menu-item .menu-link {
+            color: #ffffff !important;
+        }
+
+        /* Active item highlight */
+        #kt_aside .menu .menu-item .menu-link.active {
+            background-color: var(--usm-purple-light) !important;
+            color: #ffffff !important;
+        }
+
+        /* Hover */
+        #kt_aside .menu .menu-item .menu-link:hover {
+            background-color: var(--usm-purple-light) !important;
+            color: #ffffff !important;
+        }
+
+        /* =============================
+        HEADER COLOR (Top bar)
+        ==============================*/
+        html[data-bs-theme="light"] #kt_header {
+            background-color: var(--usm-purple-light) !important;
+        }
+
+
+        /* Header text tukar colour inspect*/
+        #kt_header .text-dark,
+        #kt_header .breadcrumb-item,
+        #kt_header h1 {
+            color: #ffffff !important;
+        }
+
+        /* =============================
+        REMOVE BLUE PRIMARY & REPLACE WITH PURPLE
+        ==============================*/
+        :root {
+            --bs-primary: var(--usm-purple);
+        }
+
+        .btn-primary {
+            background-color: var(--usm-purple) !important;
+            border-color: var(--usm-purple) !important;
+        }
+
+        .page-item.active .page-link {
+            background-color: var(--usm-purple) !important;
+            border-color: var(--usm-purple) !important;
+        }
+        /* Make the toggle arrow purple */
+        .header-brand {
+            background-color: var(--usm-purple) !important;
+        }
+
+        #kt_aside .menu-icon .ki-duotone,
+        #kt_aside .menu-icon .ki-duotone span,
+        #kt_aside .menu-icon .ki-duotone path {
+            color: #FFFFFF !important;
+            stroke: #FFFFFF !important;
+            fill: #FFFFFF !important;
+        }
+        /* ALWAYS SHOW PAGE TITLE EVEN ON TABLET/MOBILE */
+        /* FORCE PAGE TITLE TO ALWAYS SHOW */
+        .page-title {
+            display: flex !important;
+        }
+        @media (max-width: 991px) {
+            .page-title {
+                display: flex !important;
+            }
+            .page-title h1 {
+                color: white !important;
+            }
+        }
+
+        /* WHITE TITLE ONLY IN DARK THEME */
+        html[data-bs-theme="dark"] #kt_header h1,
+        html[data-bs-theme="dark"] #kt_header .breadcrumb-item,
+        html[data-bs-theme="dark"] #kt_header .text-dark {
+            color: #ffffff !important;
+        }
+
+
+
+    </style>
+
 	</head>
 	<body id="kt_body" class="aside-enabled" data-kt-app-page-loading-enabled="true" data-kt-app-page-loading="on">
 		{{-- <script>var defaultThemeMode = "light"; var themeMode; if ( document.documentElement ) { if ( document.documentElement.hasAttribute("data-bs-theme-mode")) { themeMode = document.documentElement.getAttribute("data-bs-theme-mode"); } else { if ( localStorage.getItem("data-bs-theme") !== null ) { themeMode = localStorage.getItem("data-bs-theme"); } else { themeMode = defaultThemeMode; } } if (themeMode === "system") { themeMode = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"; } document.documentElement.setAttribute("data-bs-theme", themeMode); }</script> --}}
@@ -40,11 +141,12 @@ Website: https://service_desk.com
 			<div class="page d-flex flex-row flex-column-fluid">
                 @include('layouts.leftsidebar')
 				<div class="wrapper d-flex flex-column flex-row-fluid" id="kt_wrapper">
-					<div id="kt_header" style="" class="header align-items-stretch">
+					<div id="kt_header" class="header align-items-stretch">
+
                         <div class="header-brand">
                             <a href="" class="logo text-center">
                                 <span class="logo-lg">
-                                {{-- <img alt="Logo" src="{{ asset ('metronic/assets/media/logos/ppst.png')}}" alt=""/> --}}
+                                <img alt="Logo" src="{{ asset ('metronic/assets/media/servicedesk1.png')}}" alt=""/>
                             </span>
                             </a>
                             <div id="kt_aside_toggle" class="btn btn-icon w-auto px-0 btn-active-color-primary aside-minimize" data-kt-toggle="true" data-kt-toggle-state="active" data-kt-toggle-target="body" data-kt-toggle-name="aside-minimize">
@@ -186,7 +288,9 @@ Website: https://service_desk.com
 		<script src="{{ asset ('metronic/assets/plugins/global/plugins.bundle.js')}}"></script>
 		<script src="{{ asset ('metronic/assets/js/scripts.bundle.js')}}"></script>
         @yield('js_after')
+        @yield('scripts')
 		{{-- <script src="https://unpkg.com/sweetalert2@11.9.0/dist/sweetalert2.all.js"></script> --}}
         @include('sweetalert::alert')
+
 	</body>
 </html>

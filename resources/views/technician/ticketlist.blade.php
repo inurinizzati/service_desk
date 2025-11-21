@@ -19,6 +19,24 @@
             <h3 class="card-title">Ticket List (Technician)</h3>
         </div>
         <div class="card-body">
+            <style>
+                /* Active page number button (currently blue) → make it purple */
+                .page-item.active .page-link {
+                    background-color: #7239EA !important; /* Purple */
+                    border-color: #7239EA !important;
+                    color: #fff !important;
+                }
+
+                /* Normal page number buttons (optional, if you also want purple border on hover/normal) */
+                .page-link {
+                    color: #7239EA !important;
+                }
+
+                .page-link:hover {
+                    background-color: #ebe0ff !important; /* light purple hover */
+                    color: #7239EA !important;
+                }
+            </style>
             <table class="m-datatable table align-middle table-row-dashed fs-6 gy-5">
                 <thead>
                     <tr class="text-start text-dark fw-bold fs-7 text-uppercase gs-0">
@@ -61,7 +79,7 @@
                             </td>
                             <td class="text-start">
                                 <a href="{{ route('technician.ticket.update', $ticket->id) }}"
-                                   class="btn btn-sm btn-primary fs-6">
+                                   class="btn btn-sm btn-info fs-6">
                                    Update
                                 </a>
                             </td>

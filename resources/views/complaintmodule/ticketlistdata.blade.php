@@ -4,7 +4,6 @@
 
 @section('page-header',  'Ticket List')
 
-{{-- @section('breadcrumbs',  Breadcrumbs::render('penceramah') ) --}}
 
 @section('css_after')
     <link href="{{ asset ('metronic/assets/plugins/custom/datatables/datatables.bundle.css')}}" rel="stylesheet" type="text/css" />
@@ -21,7 +20,7 @@
         <div class="card-header">
             <h3 class="card-title">History of Ticket List</h3>
             <div class="card-toolbar">
-                <a href=/createticket class="btn btn-sm btn-info fs-6">
+                <a href=/complaint/createticket class="btn btn-sm btn-info fs-6">
                     <i class="ki-duotone ki-plus-square">
                         <span class="path1"></span>
                         <span class="path2"></span>
@@ -35,21 +34,21 @@
             <style>
                 /* Active page number button (currently blue) → make it purple */
                 .page-item.active .page-link {
-                    background-color: #6f42c1 !important; /* Purple */
-                    border-color: #6f42c1 !important;
+                    background-color: #7239EA !important; /* Purple */
+                    border-color: #7239EA !important;
                     color: #fff !important;
                 }
 
                 /* Normal page number buttons (optional, if you also want purple border on hover/normal) */
                 .page-link {
-                    color: #6f42c1 !important;
+                    color: #7239EA !important;
                 }
 
                 .page-link:hover {
                     background-color: #ebe0ff !important; /* light purple hover */
-                    color: #6f42c1 !important;
+                    color: #7239EA !important;
                 }
-                </style>
+            </style>
             <table class="m-datatable table align-middle table-row-dashed fs-6 gy-5">
                 <thead>
                     <tr class="text-start text-dark fw-bold fs-7 text-uppercase gs-0">
@@ -63,7 +62,7 @@
                 </thead>
                 <tbody class="text-black-600 fw-semibold">
                     @foreach ($tickets as $ticket)
-                        <tr onclick="window.location='{{ route('ticket.details', $ticket->id) }}';" style="cursor:pointer;">
+                        <tr onclick="window.location='{{ route('complaint.ticket.details', $ticket->id) }}';" style="cursor:pointer;">
                             <td>{{ $ticket->id }}</td>
 
                             <!-- Title + Location in the same cell -->
@@ -102,9 +101,7 @@
                                         </span>
                                     @else
                                         {{-- Not yet rated - show link as button --}}
-                                        <a href="#"
-                                        class="btn btn-sm btn-info fs-6"
-                                        onclick="event.stopPropagation();">
+                                        <a href="{{ route('feedback.create', $ticket->id) }}" class="btn btn-sm btn-info fs-6" onclick="event.stopPropagation();">
                                             {{-- <i class="ki-duotone ki-star fs-4">
                                                 <span class="path1"></span>
                                                 <span class="path2"></span>
