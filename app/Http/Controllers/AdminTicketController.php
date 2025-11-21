@@ -72,7 +72,7 @@ class AdminTicketController extends Controller
             ],
             (object)[
                 'id' => 'TK000006',
-                'userid' => 'STUD000004',
+                'userid' => 'STUD000001',
                 'title' => 'Broken Study Table',
                 'category' => 'Room Facilities',
                 'description' => 'Table leg broken.',
