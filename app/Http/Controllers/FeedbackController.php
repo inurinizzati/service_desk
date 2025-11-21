@@ -70,7 +70,7 @@ class FeedbackController extends Controller
                     'userid' => 'STUD000003',
                     'student_name' => 'Asilah Zarifah',
                     'title' => 'Dirty Pantry Area',
-                    'technician_name' => 'Syafiq Hakim Bin Razali',
+                    'technician_name' => 'Siti Nur Izzah binti Abdul Rahman',
                     'rating' => 5,
                     'comment' => 'Very clean work and friendly attitude.'
                 ],
@@ -89,7 +89,7 @@ class FeedbackController extends Controller
                     'student_name' => 'Aishah Binti Azmi',
                     'title' => 'Dusty Corridor',
                     'student_name' => 'Aishah Binti Azmi',
-                    'technician_name' => 'Izwan Firdaus Bin Omar',
+                    'technician_name' => 'Siti Nur Izzah binti Abdul Rahman',
                     'rating' => 3,
                     'comment' => 'Corridor not really cleaned'
                 ],
@@ -116,7 +116,7 @@ class FeedbackController extends Controller
             'userid' => 'STUD000008',
             'student_name' => 'Hani Sofea',
             'title' => 'Unclean Washroom',
-            'technician_name' => 'Ahmad Bin Norman',
+            'technician_name' => 'Nurin Farah Izzati binti Rusdi',
             'rating' => 5,
             'comment' => 'Very clean and hygienic afterward.'
         ],
@@ -134,7 +134,7 @@ class FeedbackController extends Controller
             'userid' => 'STUD000007',
             'student_name' => 'Pei Wei',
             'title' => 'No Water Supply',
-            'technician_name' => 'Izwan Firdaus Bin Omar',
+            'technician_name' => 'Nurin Farah Izzati binti Rusdi',
             'rating' => 5,
             'comment' => 'Resolved instantly, great work!'
         ],
@@ -143,7 +143,7 @@ class FeedbackController extends Controller
             'userid' => 'STUD000003',
             'student_name' => 'Asilah Zarifah',
             'title' => 'Dirty Laundry Area',
-            'technician_name' => 'Syafiq Hakim Bin Razali',
+            'technician_name' => 'Nurin Farah Izzati binti Rusdi',
             'rating' => 5,
             'comment' => 'Area looks very clean now.'
         ],
@@ -170,7 +170,7 @@ class FeedbackController extends Controller
             'userid' => 'STUD000008',
             'student_name' => 'Hani Sofea',
             'title' => 'Wet Corridor',
-            'technician_name' => 'Izwan Firdaus Bin Omar',
+            'technician_name' => 'Nurin Farah Izzati binti Rusdi',
             'rating' => 5,
             'comment' => 'Corridor dried and cleaned well.'
         ],
@@ -179,7 +179,7 @@ class FeedbackController extends Controller
             'userid' => 'STUD000006',
             'student_name' => 'Aishah Binti Azmi',
             'title' => 'Dusty Cupboard',
-            'technician_name' => 'Syafiq Hakim Bin Razali',
+            'technician_name' => 'Nurin Farah Izzati binti Rusdi',
             'rating' => 3,
             'comment' => 'Still a bit dusty but acceptable.'
         ],
@@ -188,7 +188,7 @@ class FeedbackController extends Controller
             'userid' => 'STUD000003',
             'student_name' => 'Asilah Zarifah',
             'title' => 'Loose Water Tap',
-            'technician_name' => 'Ahmad Bin Norman',
+            'technician_name' => 'Siti Nur Izzah binti Abdul Rahman',
             'rating' => 4,
             'comment' => 'Tap now stable.'
         ],
@@ -206,7 +206,7 @@ class FeedbackController extends Controller
             'userid' => 'STUD000010',
             'student_name' => 'Nur Izzati',
             'title' => 'Dirty Pantry Sink',
-            'technician_name' => 'Syafiq Hakim Bin Razali',
+            'technician_name' => 'Nurin Farah Izzati binti Rusdi',
             'rating' => 4,
             'comment' => 'Cleaned thoroughly.'
         ],
@@ -241,15 +241,6 @@ class FeedbackController extends Controller
                     'comment' => 'Fast response, light issue fixed perfectly.'
                 ],
                 (object)[
-                    'ticket_id' => 'TK000013',
-                    'userid' => 'STUD000008',
-                    'student_name' => 'Hani Sofea',
-                    'title' => 'Unclean Washroom',
-                    'technician_name' => 'Ahmad Bin Norman',
-                    'rating' => 5,
-                    'comment' => 'Very clean and hygienic afterward.'
-                ],
-                (object)[
                     'ticket_id' => 'TK000020',
                     'userid' => 'STUD000002',
                     'student_name' => 'Aminah Farhana',
@@ -261,20 +252,11 @@ class FeedbackController extends Controller
                 (object)[
                     'ticket_id' => 'TK000021',
                     'userid' => 'STUD000004',
-                    'student_name' => 'Nurin Balqis',
+                    'student_name' => 'Aminah Farhana',
                     'title' => 'Light Buzzing Noise',
                     'technician_name' => 'Ahmad Bin Norman',
-                    'rating' => 4,
-                    'comment' => 'Buzzing noise gone.'
-                ],
-                (object)[
-                    'ticket_id' => 'TK000026',
-                    'userid' => 'STUD000003',
-                    'student_name' => 'Asilah Zarifah',
-                    'title' => 'Loose Water Tap',
-                    'technician_name' => 'Ahmad Bin Norman',
-                    'rating' => 4,
-                    'comment' => 'Tap now stable.'
+                    'rating' => 5,
+                    'comment' => 'Fast response, light issue fixed perfectly.'
                 ],
         ];
 
