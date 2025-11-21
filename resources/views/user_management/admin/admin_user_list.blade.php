@@ -103,7 +103,7 @@
 
                         {{-- FILTER --}}
                         <div class="dropdown">
-                            <button type="button" class="btn btn-light-primary me-3 dropdown-toggle" data-bs-toggle="dropdown">
+                            <button type="button" class="btn btn-light-info me-3 dropdown-toggle" data-bs-toggle="dropdown">
                                 Filter
                             </button>
                             <ul class="dropdown-menu">
@@ -121,13 +121,13 @@
                         </div>
 
                         {{-- EXPORT --}}
-                        <button type="button" class="btn btn-light-primary me-3" id="export-btn">
+                        <button type="button" class="btn btn-light-info me-3" id="export-btn">
                             Export
                         </button>
 
                         {{-- ADD USER --}}
                         <div class="btn-group">
-                            <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown">
+                            <button type="button" class="btn btn-info dropdown-toggle" data-bs-toggle="dropdown">
                                 <i class="ki-duotone ki-plus-square"></i> Add User
                             </button>
 
@@ -152,16 +152,16 @@
 
                 <style>
                     .page-item.active .page-link {
-                        background-color: #6f42c1 !important;
-                        border-color: #6f42c1 !important;
+                        background-color: #7239EA !important;
+                        border-color: #7239EA !important;
                         color: #fff !important;
                     }
                     .page-link {
-                        color: #6f42c1 !important;
+                        color: #7239EA !important;
                     }
                     .page-link:hover {
                         background-color: #ebe0ff !important;
-                        color: #6f42c1 !important;
+                        color: #7239EA !important;
                     }
                 </style>
 
@@ -202,7 +202,7 @@
 
                                 <td>
                                     <a href="{{ route('admin.users.update', $user->id) }}"
-                                       class="btn btn-sm btn-primary btn-icon" title="Edit">
+                                       class="btn btn-sm btn-info btn-icon" title="Edit">
                                         <i class="fas fa-edit"></i>
                                     </a>
 
