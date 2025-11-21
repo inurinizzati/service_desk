@@ -276,7 +276,7 @@ class FeedbackController extends Controller
     {
         $ticket = (object) [
             'id' => 001,
-            'ticket_num' => 'TK001',
+            'title' => 'Fan Not Working',
             'technician' => (object)[
                 'id' => 88,
                 'name' => 'Dummy Technician'

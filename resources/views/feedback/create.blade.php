@@ -2,7 +2,7 @@
 
 @section('title', 'Create Feedback')
 
-@section('page-header', 'Create Feedback : ' . $ticket->ticket_num)
+@section('page-header', 'Create Feedback : ' . $ticket->title)
 
 
 @section('css_after')

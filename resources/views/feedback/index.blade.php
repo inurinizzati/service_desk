@@ -72,11 +72,11 @@
             <table id="feedbackTable" class="m-datatable table align-middle table-row-dashed fs-6 gy-5">
                 <thead>
                     <tr class="text-dark fw-bold fs-7 text-uppercase gs-0">
-                        <th style="width:10%; text-align:left;">Ticket ID</th>
-                        <th style="width:10%; text-align:left;">Title</th>
-                        <th style="width:25%; text-align:left;">Technician Name</th>
-                        <th style="width:20%; text-align:left;">Rating</th>
-                        <th style="width:35%; text-align:left;">Comment</th>
+                        <th >Ticket ID</th>
+                        <th >Title</th>
+                        <th >Technician Name</th>
+                        <th >Rating</th>
+                        <th>Comment</th>
                     </tr>
                 </thead>
 
