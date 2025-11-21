@@ -1,30 +1,18 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
+// In: database/migrations/2025_11_20_160008_create_roles_table.php
+
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
+public function up()
 {
-    /**
-     * Run the migrations.
-     */
-    public function up()
-    {
+    if (!Schema::hasTable('roles')) {
         Schema::create('roles', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->unique();
+            $table->string('name');
             $table->string('display_name')->nullable();
             $table->string('description')->nullable();
             $table->timestamps();
         });
     }
-
-    /**
-     * Reverse the migrations.
-     */
-    public function down(): void
-    {
-        Schema::dropIfExists('roles');
-    }
-};
+}
