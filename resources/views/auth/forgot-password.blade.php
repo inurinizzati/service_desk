@@ -297,7 +297,7 @@
         <div class="auth-logo">
             <img src="{{ asset('metronic/assets/media/logoservicedesk.png') }}" 
                  alt="USM">
-            <img src="{{ asset('metronic/assets/media/servicedesk1.png') }}" alt="Service Desk Logo">
+            <img src="{{ asset('metronic/assets/media/servicedeskpurple.png') }}" alt="Service Desk Logo" sizes="500px">
         </div>
 
         <div class="auth-title">Forgot Password?</div>
