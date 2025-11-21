@@ -179,7 +179,7 @@
                     <!-- Form Actions -->
                     <div class="d-flex justify-content-end gap-2">
                         <a href="{{ route('userlist') }}" class="btn btn-light">Cancel</a>
-                        <button type="submit" class="btn btn-primary">
+                        <button type="submit" class="btn btn-info">
                             <i class="ki-duotone ki-check fs-2">
                                 <span class="path1"></span>
                                 <span class="path2"></span>

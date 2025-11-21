@@ -41,7 +41,7 @@
                         <input type="hidden" name="userid" value="{{ $user->userid }}" />
                         @error('userid')
                             <div class="text-danger mt-1">{{ $message }}</div>
-                        @enderror
+                        @enderror                       
                     </div>
 
                     <div class="col-md-6 mb-5">
@@ -115,8 +115,11 @@
                 </div>
 
                 <div class="text-end">
-                    <button type="submit" class="btn btn-primary">
-                        <i class="ki-duotone ki-check fs-2"></i>
+                    <button type="submit" class="btn btn-info">
+                        <i class="ki-duotone ki-check fs-2">
+                            <span class="path1"></span>
+                            <span class="path2"></span>
+                        </i>
                         Update User
                     </button>
                 </div>

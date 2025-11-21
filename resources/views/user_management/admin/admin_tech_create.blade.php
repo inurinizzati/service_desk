@@ -123,7 +123,7 @@
                         ?>
                         <!-- Role -->
                         <div class="col-md-6 mb-5">
-                            <label for="role" class="form-label required">Role</label>
+                            <label for="role" class="form-label">Role</label>
 
                             <input type="text"
                                 class="form-control"
@@ -155,7 +155,7 @@
 
                         <!-- Status -->
                         <div class="col-md-6 mb-5">
-                            <label for="status" class="form-label required">Status</label>
+                            <label for="status" class="form-label">Status</label>
 
                             <input type="text"
                                 class="form-control"
@@ -214,7 +214,7 @@
                     <!-- Form Actions -->
                     <div class="d-flex justify-content-end gap-2">
                         <a href="{{ route('userlist') }}" class="btn btn-light">Cancel</a>
-                        <button type="submit" class="btn btn-primary">
+                        <button type="submit" class="btn btn-info">
                             <i class="ki-duotone ki-check fs-2">
                                 <span class="path1"></span>
                                 <span class="path2"></span>

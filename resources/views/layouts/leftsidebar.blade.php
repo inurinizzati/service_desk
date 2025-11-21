@@ -161,6 +161,24 @@
                             </div>
                             @endrole
 
+                            @role('admin')
+                            <!-- User Management Admin Section -->
+                            <div class="menu-item">
+                                <a class="menu-link {{ request()->routeIs('userlist') ? ' active' : '' }}"
+                                    href="{{ route('userlist') }}">
+                                    <span class="menu-icon">
+                                    <i class="ki-duotone ki-profile-user fs-2">
+                                        <span class="path1"></span>
+                                        <span class="path2"></span>
+                                        <span class="path3"></span>
+                                        <span class="path4"></span>
+                                    </i>
+                                    </span>
+                                    <span class="menu-title fw-semibold">User Management</span>
+                                </a>
+                            </div>
+                            @endrole
+
                             <!-- User Account Section -->
                             <div class="menu-item pt-5">
                                 <div class="menu-content">
@@ -203,13 +221,14 @@
         </div>
     </div>
     <div class="aside-footer flex-column-auto py-5" id="kt_aside_footer">
-        <a href="{{ route('logout') }}" class="btn btn-flex btn-custom btn-danger w-100"
+        <a href="{{ route('logout') }}" 
+            class="btn btn-flex btn-light-primary btn-active-light-danger w-100 shadow-sm"
             onclick="event.preventDefault(); document.getElementById('logout-form').submit()">
-            <span class="btn-label">Log Out</span>
-            <i class="ki-duotone ki-exit-left ms-2 fs-2">
+            <i class="ki-duotone ki-exit-left fs-2 me-2">
                 <span class="path1"></span>
                 <span class="path2"></span>
             </i>
+            <span class="btn-label">Log Out</span>
         </a>
         <form id="logout-form" action="{{ route('logout') }}" method="post">
             @csrf

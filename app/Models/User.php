@@ -42,7 +42,6 @@ class User extends Authenticatable implements LaratrustUserContract
 
         static::creating(function ($user) {
             if (empty($user->userid)) {
-
                 $lastUser = static::where('userid', 'like', 'STUD%')
                     ->orderByRaw('CAST(SUBSTRING(userid, 5) AS UNSIGNED) DESC')
                     ->first();
