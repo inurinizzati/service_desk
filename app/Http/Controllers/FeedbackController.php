@@ -75,15 +75,6 @@ class FeedbackController extends Controller
                     'comment' => 'Very clean work and friendly attitude.'
                 ],
                 (object)[
-                    'ticket_id' => 'TK000006',
-                    'userid' => 'STUD000004',
-                    'student_name' => 'Nurin Balqis',
-                    'title' => 'Broken Study Table',
-                    'technician_name' => 'Syafiq Hakim Bin Razali',
-                    'rating' => 2,
-                    'comment' => 'Table not fixed properly.'
-                ],
-                (object)[
                     'ticket_id' => 'TK000009',
                     'userid' => 'STUD000006',
                     'student_name' => 'Aishah Binti Azmi',

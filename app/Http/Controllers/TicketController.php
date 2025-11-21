@@ -47,6 +47,18 @@ class TicketController extends Controller
                 'resolved_date' => '',
             ],
             (object)[
+                'id' => 'TK000006',
+                'userid' => 'STUD000001',
+                'title' => 'Broken Study Table',
+                'category' => 'Room Facilities',
+                'description' => 'Table leg broken.',
+                'location' => 'M03 Saujana 05-45A',
+                'technician_name' => 'Syafiq Hakim Bin Razali',
+                'date' => '25/01/2025',
+                'status' => 'Completed',
+                'resolved_date' => '26/01/2025',
+            ],
+            (object)[
                 'id' => 'TK000007',
                 'userid' => 'STUD000001',
                 'title' => 'Power Socket Not Working',
