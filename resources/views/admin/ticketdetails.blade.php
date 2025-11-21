@@ -83,18 +83,18 @@
 
         <div class="card-footer text-end">
             <a href="{{ route('admin.ticket.list') }}" class="btn btn-sm btn-info fs-6">Back</a>
-            <button
+            {{-- <button
                 class="btn btn-sm btn-info fs-6 {{ $ticket->status != 'Pending' ? 'disabled' : '' }}"
                 data-bs-toggle="modal"
                 data-bs-target="#
                 Modal">
                 Assign
-            </button>
+            </button> --}}
         </div>
     </div>
 </div>
 
-<!-- Assign Technician Modal -->
+{{-- <!-- Assign Technician Modal -->
 <div class="modal fade" id="assignModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog">
         <form method="POST" action="{{ route('admin.assign.technician') }}">
@@ -120,5 +120,5 @@
             </div>
         </form>
     </div>
-</div>
+</div> --}}
 @endsection

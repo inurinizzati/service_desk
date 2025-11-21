@@ -15,6 +15,7 @@ class AdminTicketController extends Controller
                 'category' => 'Room Facilities',
                 'description' => 'Fan stops functioning',
                 'location' => 'M04 Saujana 04-28B',
+                'technician_name' => 'Ahmad Bin Norman',
                 'date' => '05/01/2025',
                 'status' => 'Completed',
                 'resolved_date' => '06/01/2025',
@@ -26,6 +27,7 @@ class AdminTicketController extends Controller
                 'category' => 'Electrical & Lighting',
                 'description' => 'Main light flickers occasionally.',
                 'location' => 'M04 Saujana 04-28B',
+                'technician_name' => 'Ahmad Bin Norman',
                 'date' => '11/01/2025',
                 'status' => 'Completed',
                 'resolved_date' => '13/02/2025',
@@ -37,6 +39,7 @@ class AdminTicketController extends Controller
                 'category' => 'Internet Connection',
                 'description' => 'Wi-Fi unusually slow at night.',
                 'location' => 'M03 Saujana 03-56A',
+                'technician_name' => 'Ahmad Bin Norman',
                 'date' => '16/01/2025',
                 'status' => 'Cancel',
                 'comment' => 'Ticket cancelled as the problem has been resolved.',
@@ -49,6 +52,7 @@ class AdminTicketController extends Controller
                 'category' => 'Cleanliness & Maintenance',
                 'description' => 'Pantry not clean.',
                 'location' => 'M03 Saujana Pantry Level 4',
+                'technician_name' => 'Syafiq Hakim Bin Razali',
                 'date' => '18/01/2025',
                 'status' => 'Completed',
                 'resolved_date' => '19/01/2025',
@@ -60,6 +64,7 @@ class AdminTicketController extends Controller
                 'category' => 'Toilet & Plumbing',
                 'description' => 'Toilet bowl clogged.',
                 'location' => 'M04 Saujana 04-28B',
+                'technician_name' => 'Syafiq Hakim Bin Razali',
                 'date' => '21/01/2025',
                 'status' => 'Cancel',
                 'comment' => 'Ticket cancelled as the problem has been resolved.',
@@ -72,6 +77,7 @@ class AdminTicketController extends Controller
                 'category' => 'Room Facilities',
                 'description' => 'Table leg broken.',
                 'location' => 'M03 Saujana 05-45A',
+                'technician_name' => 'Syafiq Hakim Bin Razali',
                 'date' => '25/01/2025',
                 'status' => 'Completed',
                 'resolved_date' => '26/01/2025',
@@ -105,6 +111,7 @@ class AdminTicketController extends Controller
                 'category' => 'Cleanliness & Maintenance',
                 'description' => 'Corridor not cleaned for days.',
                 'location' => 'M04 Saujana 10-24B',
+                'technician_name' => 'Izwan Firdaus Bin Omar',
                 'date' => '05/02/2025',
                 'status' => 'Completed',
                 'resolved_date' => '06/02/2025',
@@ -116,6 +123,7 @@ class AdminTicketController extends Controller
             'category' => 'Room Facilities',
             'description' => 'Water dripping from AC.',
             'location' => 'M03 Saujana 03-56A',
+            'technician_name' => 'Syafiq Hakim Bin Razali',
             'date' => '10/02/2025',
             'status' => 'Completed',
             'resolved_date' => '11/02/2025',
@@ -138,6 +146,7 @@ class AdminTicketController extends Controller
                 'category' => 'Internet Connection',
                 'description' => 'Disconnects for a few minutes.',
                 'location' => 'M03 Saujana 05-45A',
+                'technician_name' => 'Izwan Firdaus Bin Omar',
                 'date' => '13/02/2025',
                 'status' => 'Completed',
                 'resolved_date' => '14/02/2025',
@@ -149,6 +158,7 @@ class AdminTicketController extends Controller
                 'category' => 'Cleanliness & Maintenance',
                 'description' => 'Washroom floor dirty.',
                 'location' => 'M03 Saujana 02-12A',
+                'technician_name' => 'Ahmad Bin Norman',
                 'date' => '14/02/2025',
                 'status' => 'Completed',
                 'resolved_date' => '15/02/2025',
@@ -160,6 +170,7 @@ class AdminTicketController extends Controller
                 'category' => 'Toilet & Plumbing',
                 'description' => 'Water leaking below sink.',
                 'location' => 'M04 Saujana 01-08A',
+                'technician_name' => 'Syafiq Hakim Bin Razali',
                 'date' => '15/02/2025',
                 'status' => 'Cancel',
                 'comment' => 'Issue resolved by student.',
@@ -172,6 +183,7 @@ class AdminTicketController extends Controller
                 'category' => 'Room Facilities',
                 'description' => 'Door cannot lock properly.',
                 'location' => 'M04 Saujana 04-28B',
+                'technician_name' => 'Syafiq Hakim Bin Razali',
                 'date' => '17/02/2025',
                 'status' => 'Completed',
                 'resolved_date' => '18/02/2025',
@@ -194,6 +206,7 @@ class AdminTicketController extends Controller
                 'category' => 'Toilet & Plumbing',
                 'description' => 'Water suddenly stops.',
                 'location' => 'M04 Saujana 07-21B',
+                'technician_name' => 'Izwan Firdaus Bin Omar',
                 'date' => '20/02/2025',
                 'status' => 'Completed',
                 'resolved_date' => '20/02/2025',
@@ -205,6 +218,7 @@ class AdminTicketController extends Controller
                 'category' => 'Cleanliness & Maintenance',
                 'description' => 'Trash not cleaned for days.',
                 'location' => 'M03 Saujana Laundry Level 2',
+                'technician_name' => 'Syafiq Hakim Bin Razali',
                 'date' => '21/02/2025',
                 'status' => 'Completed',
                 'resolved_date' => '22/02/2025',
@@ -227,6 +241,7 @@ class AdminTicketController extends Controller
                 'category' => 'Room Facilities',
                 'description' => 'Chair leg snapped.',
                 'location' => 'M03 Saujana 03-56A',
+                'technician_name' => 'Ahmad Bin Norman',
                 'date' => '25/02/2025',
                 'status' => 'Completed',
                 'resolved_date' => '26/02/2025',
@@ -238,6 +253,7 @@ class AdminTicketController extends Controller
                 'category' => 'Electrical & Lighting',
                 'description' => 'Buzzing from ceiling light.',
                 'location' => 'M03 Saujana 05-45A',
+                'technician_name' => 'Ahmad Bin Norman',
                 'date' => '26/02/2025',
                 'status' => 'Completed',
                 'resolved_date' => '26/02/2025',
@@ -260,6 +276,7 @@ class AdminTicketController extends Controller
                 'category' => 'Cleanliness & Maintenance',
                 'description' => 'Water spilled, not cleaned.',
                 'location' => 'M03 Saujana Corridor Level 3',
+                'technician_name' => 'Izwan Firdaus Bin Omar',
                 'date' => '01/03/2025',
                 'status' => 'Completed',
                 'resolved_date' => '02/03/2025',
@@ -271,6 +288,7 @@ class AdminTicketController extends Controller
                 'category' => 'Internet Connection',
                 'description' => 'Cannot connect to Wi-Fi.',
                 'location' => 'M04 Saujana 08-11A',
+                'technician_name' => 'Izwan Firdaus Bin Omar',
                 'date' => '03/03/2025',
                 'status' => 'Cancel',
                 'comment' => 'Duplicate ticket.',
@@ -283,6 +301,7 @@ class AdminTicketController extends Controller
                 'category' => 'Cleanliness & Maintenance',
                 'description' => 'Cupboard full of dust.',
                 'location' => 'M04 Saujana 10-24B',
+                'technician_name' => 'Syafiq Hakim Bin Razali',
                 'date' => '04/03/2025',
                 'status' => 'Completed',
                 'resolved_date' => '05/03/2025',
@@ -294,6 +313,7 @@ class AdminTicketController extends Controller
                 'category' => 'Toilet & Plumbing',
                 'description' => 'Tap wiggles when used.',
                 'location' => 'M03 Saujana 04-27A',
+                'technician_name' => 'Ahmad Bin Norman',
                 'date' => '05/03/2025',
                 'status' => 'Completed',
                 'resolved_date' => '06/03/2025',
@@ -316,6 +336,7 @@ class AdminTicketController extends Controller
                 'category' => 'Electrical & Lighting',
                 'description' => 'Switch becomes hot.',
                 'location' => 'M04 Saujana 07-21B',
+                'technician_name' => 'Izwan Firdaus Bin Omar',
                 'date' => '08/03/2025',
                 'status' => 'Completed',
                 'resolved_date' => '09/03/2025',
@@ -327,19 +348,25 @@ class AdminTicketController extends Controller
                 'category' => 'Cleanliness & Maintenance',
                 'description' => 'Sink full of leftover food.',
                 'location' => 'M03 Saujana Pantry Level 2',
+                'technician_name' => 'Syafiq Hakim Bin Razali',
                 'date' => '10/03/2025',
                 'status' => 'Completed',
                 'resolved_date' => '11/03/2025',
             ],
         ];
 
-        $technicians = [
-            (object)['id' => 1, 'name' => 'Technician A'],
-            (object)['id' => 2, 'name' => 'Technician B'],
-            (object)['id' => 3, 'name' => 'Technician C'],
+       $technicians = [
+            (object)['id' => 1, 'name' => 'Ahmad Bin Norman', 'categories' => ['Internet Connection', 'Electrical & Lighting']],
+            (object)['id' => 2, 'name' => 'Syafiq Hakim Bin Razali', 'categories' => ['Electrical & Lighting']],
+            (object)['id' => 3, 'name' => 'Izwan Firdaus Bin Omar', 'categories' => ['Plumbing', 'Room Facilities']],
         ];
 
-        return view('admin.ticketlist', ['tickets' => $tickets, 'technicians' => $technicians]);
+
+        // return ticket list view (no $id required here)
+        return view('admin.ticketlist', [
+            'tickets' => $tickets,
+            'technicians' => collect($technicians) // make it a collection for convenience
+        ]);
     }
 
     public function show($id)
@@ -678,18 +705,32 @@ class AdminTicketController extends Controller
         }
 
         $technicians = [
-            (object)['id' => 1, 'name' => 'Technician A'],
-            (object)['id' => 2, 'name' => 'Technician B'],
-            (object)['id' => 3, 'name' => 'Technician C'],
+            (object)['id' => 1, 'name' => 'Technician A', 'category' => 'Internet Connection'],
+            (object)['id' => 2, 'name' => 'Technician B', 'category' => 'Electrical & Lighting'],
+            (object)['id' => 3, 'name' => 'Technician C', 'category' => 'Plumbing'],
         ];
 
-        return view('admin.ticketdetails', ['ticket' => $ticket, 'technicians' => $technicians]);
+        // filter technicians that match the ticket category
+        $filteredTechnicians = collect($technicians)->filter(function($tech) use ($ticket) {
+            return isset($tech->category) && $tech->category === $ticket->category;
+        });
+
+        return view('admin.ticketdetails', [
+            'ticket' => $ticket,
+            'technicians' => $filteredTechnicians
+        ]);
     }
 
     public function assignTechnician(Request $request)
     {
         $ticketId = $request->ticket_id;
         $technicianId = $request->technician_id;
+
+        // Example: validate inputs
+        $request->validate([
+            'ticket_id' => 'required',
+            'technician_id' => 'required|integer',
+        ]);
 
         // Here you would update DB to assign technician
         // For now, just flash success
