@@ -12,52 +12,89 @@ use App\Http\Controllers\AdminUserController;   // Admin routes for user managem
 use App\Http\Controllers\UserProfileController;
 use App\Models\Role;
 
-// Dashboard route: shows a list of up to 50 users (admin user list)
-Route::get('/userlist', [AdminUserController::class, 'index'])->middleware(['auth', 'verified'])->name('userlist');
+// // Dashboard route: shows a list of up to 50 users (admin user list)
+// Route::get('/userlist', [AdminUserController::class, 'index'])->middleware(['auth', 'verified'])->name('userlist');
 
-// Add export route
-Route::get('/admin/users/export', [AdminUserController::class, 'export'])->middleware(['auth', 'verified'])->name('admin.users.export');
+// // Add export route
+// Route::get('/admin/users/export', [AdminUserController::class, 'export'])->middleware(['auth', 'verified'])->name('admin.users.export');
 
-// Group admin user management routes with middleware and prefix for clarity and maintainability
-Route::middleware(['auth', 'verified'])->prefix('admin')->group(function () {
+// // Group admin user management routes with middleware and prefix for clarity and maintainability
+// Route::middleware(['auth', 'verified'])->prefix('admin')->group(function () {
 
-    // Unified store route for both students and technicians
+//     // Unified store route for both students and technicians
+//     Route::post('/users', [AdminUserController::class, 'store'])->name('admin.users.store');
+
+//     // Student creation page
+//     Route::get('/admin_stud_create', function () {
+//         // Attempt to retrieve hostels for assigning to students, if exist
+//         $hostels = collect([]);
+//         if (Schema::hasTable('hostels')) {
+//             try {
+//                 $hostels = DB::table('hostels')->get();
+//             } catch (\Exception $e) {
+//                 $hostels = collect([]);
+//             }
+//         }
+//         return view('user_management.admin.admin_stud_create', compact('hostels'));
+//     })->name('admin.stud.create');
+
+//     // Technician creation page
+//     Route::get('/admin_tech_create', function () {
+//         // Could fetch additional technician-relevant data for the form if needed
+//         return view('user_management.admin.admin_tech_create');
+//     })->name('admin.tech.create');
+// });
+
+// // Admin: show user edit page for a specific user
+// Route::get('/admin/users/{user}/update', function (\App\Models\User $user) {
+//     // THE FIX: Fetch all roles
+//     $roles = DB::table('roles')->get();
+//     // Pass BOTH 'user' AND 'roles' to the view
+//     return view('user_management.admin.admin_user_update', compact('user', 'roles'));
+// })->name('admin.users.update');
+
+
+// // Admin: destroy a specific user (to be implemented)
+// Route::get('/admin/admin_users_destroy/{id}', function ($id) {
+//     return "Destroy User $id (to be implemented)";
+// })->name('admin.users.destroy');
+
+
+Route::middleware(['auth', 'verified', 'role:admin'])->prefix('admin')->group(function () {
+
+    // User list
+    Route::get('/userlist', [AdminUserController::class, 'index'])->name('admin.userlist');
+
+
+    // Export users
+    Route::get('/users/export', [AdminUserController::class, 'export'])->name('admin.users.export');
+
+    // Store new users (student / technician)
     Route::post('/users', [AdminUserController::class, 'store'])->name('admin.users.store');
 
     // Student creation page
-    Route::get('/admin_stud_create', function () {
-        // Attempt to retrieve hostels for assigning to students, if exist
-        $hostels = collect([]);
-        if (Schema::hasTable('hostels')) {
-            try {
-                $hostels = DB::table('hostels')->get();
-            } catch (\Exception $e) {
-                $hostels = collect([]);
-            }
-        }
+    Route::get('/student/create', function () {
+        $hostels = DB::table('hostels')->get() ?? collect([]);
         return view('user_management.admin.admin_stud_create', compact('hostels'));
-    })->name('admin.stud.create');
+    })->name('admin.student.create');
 
     // Technician creation page
-    Route::get('/admin_tech_create', function () {
-        // Could fetch additional technician-relevant data for the form if needed
+    Route::get('/technician/create', function () {
         return view('user_management.admin.admin_tech_create');
-    })->name('admin.tech.create');
+    })->name('admin.technician.create');
+
+    // edit user
+    Route::get('/users/{user}/edit', function (\App\Models\User $user) {
+        // Laratrust way to load all roles
+        $roles = \App\Models\Role::all();
+        return view('user_management.admin.admin_user_update', compact('user', 'roles'));
+    })->name('admin.users.edit');
+
+    // destroy
+    Route::delete('/users/{id}', [AdminUserController::class, 'destroy'])
+        ->name('admin.users.destroy');
 });
 
-// Admin: show user edit page for a specific user
-Route::get('/admin/users/{user}/update', function (\App\Models\User $user) {
-    // THE FIX: Fetch all roles
-    $roles = DB::table('roles')->get();
-    // Pass BOTH 'user' AND 'roles' to the view
-    return view('user_management.admin.admin_user_update', compact('user', 'roles'));
-})->name('admin.users.update');
-
-
-// Admin: destroy a specific user (to be implemented)
-Route::get('/admin/admin_users_destroy/{id}', function ($id) {
-    return "Destroy User $id (to be implemented)";
-})->name('admin.users.destroy');
 
 Route::get('/', function () {
     return view('welcome');
@@ -77,23 +114,60 @@ Route::redirect('/', '/dashboard');
 // })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::get('/dashboardadmin', [DashboardController::class, 'index'])
-    ->middleware(['auth', 'verified'])
+    ->middleware(['auth', 'verified',])
     ->name('dashboard');
 
-Route::get('/dashboard', [DashboardController::class, 'student']) //for student and technician dashboard
+Route::get('/dashboard/student', [DashboardController::class, 'student']) //for student and technician dashboard
     ->middleware(['auth', 'verified'])
     ->name('dashboard.student');
 
+Route::get('/dashboard', [DashboardController::class, 'technian']) //for  technician dashboard
+    ->middleware(['auth', 'verified'])
+    ->name('dashboard.technian');
+
 Route::middleware('auth')->group(function () {
 
-    //feedback
+    //Complaint Ticket Module
+    Route::prefix('complaint')->name('complaint.')->group(function () {
+        Route::get('/createticket', function () {
+            return view('complaintmodule.createticket');
+        });
+        Route::get('/ticketlistdata', [TicketController::class, 'index'])->name('ticket.list');
+        Route::get('/ticket/{id}', [TicketController::class, 'show'])->name('ticket.details');
+
+
+    });
+
+    //Feedback
     Route::prefix('feedback')->name('feedback.')->group(function () {
         Route::get('/index', [FeedbackController::class, 'index'])->name('index');
         Route::get('/Admin', [FeedbackController::class, 'index_admin'])->name('index_admin');
         Route::get('/technian', [FeedbackController::class, 'index_technian'])->name('index_technian');
         Route::get('/create', [FeedbackController::class, 'create'])->name('create');
         Route::post('/save', [FeedbackController::class, 'store'])->name('save');
+    });
 
+    //Admin Ticket
+    Route::prefix('admin')->group(function () {
+        Route::get('/tickets', [AdminTicketController::class, 'index'])->name('admin.ticket.list');
+        Route::get('/tickets/{id}', [AdminTicketController::class, 'show'])->name('admin.ticket.details');
+        Route::post('/tickets/assign', [AdminTicketController::class, 'assignTechnician'])->name('admin.assign.technician');
+    });
+
+    // Technician
+    Route::prefix('technician')->group(function () {
+
+        Route::get('/tickets', [TechnicianTicketController::class, 'index'])
+            ->name('technician.ticket.list');
+
+        Route::get('/tickets/{id}', [TechnicianTicketController::class, 'show'])
+            ->name('technician.ticket.details');
+
+        Route::get('/tickets/{id}/update', [TechnicianTicketController::class, 'edit'])
+            ->name('technician.ticket.update');
+
+        Route::post('/tickets/{id}/update', [TechnicianTicketController::class, 'update'])
+            ->name('technician.ticket.update.submit');
     });
 
 
@@ -114,35 +188,14 @@ Route::middleware('auth')->group(function () {
 
 //Complaint Ticket Module
 
-Route::get('/createticket', function () {
-    return view('complaintmodule.createticket');
-});
+// Route::get('/createticket', function () {
+//     return view('complaintmodule.createticket');
+// });
 
-Route::get('/ticketlistdata', [TicketController::class, 'index'])->name('ticket.list');
+// Route::get('/ticketlistdata', [TicketController::class, 'index'])->name('ticket.list');
 
-Route::get('/ticket/{id}', [TicketController::class, 'show'])->name('ticket.details');
+// Route::get('/ticket/{id}', [TicketController::class, 'show'])->name('ticket.details');
 
-//Admin Ticket
-Route::prefix('admin')->group(function () {
-    Route::get('/tickets', [AdminTicketController::class, 'index'])->name('admin.ticket.list');
-    Route::get('/tickets/{id}', [AdminTicketController::class, 'show'])->name('admin.ticket.details');
-    Route::post('/tickets/assign', [AdminTicketController::class, 'assignTechnician'])->name('admin.assign.technician');
-});
 
-// Technician
-Route::prefix('technician')->middleware(['auth'])->group(function () {
-
-    Route::get('/tickets', [TechnicianTicketController::class, 'index'])
-        ->name('technician.ticket.list');
-
-    Route::get('/tickets/{id}', [TechnicianTicketController::class, 'show'])
-        ->name('technician.ticket.details');
-
-    Route::get('/tickets/{id}/update', [TechnicianTicketController::class, 'edit'])
-        ->name('technician.ticket.update');
-
-    Route::post('/tickets/{id}/update', [TechnicianTicketController::class, 'update'])
-        ->name('technician.ticket.update.submit');
-});
 
 require __DIR__.'/auth.php';

@@ -233,7 +233,7 @@
                                 </h3>
                                 <!-- Toolbar could go here -->
                             </div>
-                            <a href="{{ route('ticket.list') }}" class="card hoverable card-xl-stretch h-100">
+                            <a href="{{ route('complaint.ticket.list') }}" class="card hoverable card-xl-stretch h-100">
                                 <div class="card-body d-flex flex-center flex-column pt-0 px-0">
                                     <!-- Added wrapper for Chart.js sizing -->
                                     <div class="chart-outer-container" id="complaintChartWrapper">

@@ -6,20 +6,25 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    public function up(): void
+    /**
+     * Run the migrations.
+     */
+    public function up()
     {
-        Schema::create('roles', function (Blueprint $table) {
+        Schema::create('permissions', function (Blueprint $table) {
             $table->id();
-            // The name of the role (e.g., 'Admin', 'Student')
             $table->string('name')->unique();
-            // A descriptive slug for programmatic use (e.g., 'admin', 'student')
-            $table->string('slug')->unique();
+            $table->string('display_name')->nullable();
+            $table->string('description')->nullable();
             $table->timestamps();
         });
     }
 
+    /**
+     * Reverse the migrations.
+     */
     public function down(): void
     {
-        Schema::dropIfExists('roles');
+        Schema::dropIfExists('permissions');
     }
 };

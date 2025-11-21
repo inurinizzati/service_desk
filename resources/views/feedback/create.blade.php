@@ -71,7 +71,7 @@
                 reverseButtons: true
             }).then((result) => {
                 if (result.isConfirmed) {
-                    window.location.href = "{{ route('ticket.list') }}";
+                    window.location.href = "{{ route('complaint.ticket.list') }}";
                 }
             });
 

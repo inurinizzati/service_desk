@@ -14,10 +14,11 @@
                             <div class="menu-content">
                                 <span class="menu-heading fw-bold text-uppercase fs-7">Menu</span>
                             </div>
+                            @role('admin')
                             <!-- Dashboard Admin Section -->
                             <div class="menu-item">
-                                <a class="menu-link {{ request()->routeIs('#') ? ' active' : '' }}"
-                                    href="#">
+                                <a class="menu-link {{ request()->routeIs('dashboard') ? ' active' : '' }}"
+                                    href="{{ route('dashboard') }}">
                                     <span class="menu-icon">
                                         <i class="ki-duotone ki-element-11 fs-2">
                                             <span class="path1"></span>
@@ -29,27 +30,13 @@
                                     <span class="menu-title fw-semibold">Dashboard</span>
                                 </a>
                             </div>
+                            @endrole
 
-                            <!-- Dashboard Technian Section -->
-                            <div class="menu-item">
-                                <a class="menu-link {{ request()->routeIs('#') ? ' active' : '' }}"
-                                    href="#">
-                                    <span class="menu-icon">
-                                        <i class="ki-duotone ki-element-11 fs-2">
-                                            <span class="path1"></span>
-                                            <span class="path2"></span>
-                                            <span class="path3"></span>
-                                            <span class="path4"></span>
-                                        </i>
-                                    </span>
-                                    <span class="menu-title fw-semibold">Dashboard</span>
-                                </a>
-                            </div>
-
+                            @role('student')
                             <!-- Dashboard Student Section -->
                             <div class="menu-item">
-                                <a class="menu-link {{ request()->routeIs('#') ? ' active' : '' }}"
-                                    href="#">
+                                <a class="menu-link {{ request()->routeIs('dashboard.student') ? ' active' : '' }}"
+                                href="{{ route('dashboard.student') }}">
                                     <span class="menu-icon">
                                         <i class="ki-duotone ki-element-11 fs-2">
                                             <span class="path1"></span>
@@ -61,11 +48,31 @@
                                     <span class="menu-title fw-semibold">Dashboard</span>
                                 </a>
                             </div>
+                            @endrole
 
+                            @role('technician')
+                            <!-- Dashboard Technian Section -->
+                            <div class="menu-item">
+                                <a class="menu-link {{ request()->routeIs('dashboard.technian') ? ' active' : '' }}"
+                                href="{{ route('dashboard.technian') }}">
+                                    <span class="menu-icon">
+                                        <i class="ki-duotone ki-element-11 fs-2">
+                                            <span class="path1"></span>
+                                            <span class="path2"></span>
+                                            <span class="path3"></span>
+                                            <span class="path4"></span>
+                                        </i>
+                                    </span>
+                                    <span class="menu-title fw-semibold">Dashboard</span>
+                                </a>
+                            </div>
+                            @endrole
+
+                            @role('student')
                             <!-- Ticket List Student Section -->
                             <div class="menu-item">
-                                <a class="menu-link {{ request()->routeIs('ticket.list') ? ' active' : '' }}"
-                                    href="{{ route('ticket.list') }}">
+                                <a class="menu-link {{ request()->routeIs('complaint.ticket.list') ? ' active' : '' }}"
+                                    href="{{ route('complaint.ticket.list') }}">
                                     <span class="menu-icon">
                                         <i class="ki-duotone ki-directbox-default fs-2">
                                             <span class="path1"></span>
@@ -77,7 +84,9 @@
                                     <span class="menu-title fw-semibold">Ticket list</span>
                                 </a>
                             </div>
+                            @endrole
 
+                            @role('admin')
                             <!-- Ticket List Admin Section -->
                             <div class="menu-item">
                                 <a class="menu-link {{ request()->routeIs('admin.ticket.list') ? ' active' : '' }}"
@@ -93,6 +102,9 @@
                                     <span class="menu-title fw-semibold">Ticket list</span>
                                 </a>
                             </div>
+                            @endrole
+
+                            @role('technician')
                             <!-- Ticket List Technian Section -->
                             <div class="menu-item">
                                 <a class="menu-link {{ request()->routeIs('technician.ticket.list') ? ' active' : '' }}"
@@ -108,7 +120,9 @@
                                     <span class="menu-title fw-semibold">Ticket list</span>
                                 </a>
                             </div>
+                            @endrole
 
+                            @role('student')
                             <!-- Feedback Student Section -->
                             <div class="menu-item">
                                 <a class="menu-link {{ request()->routeIs('feedback.index') ? ' active' : '' }}"
@@ -119,7 +133,9 @@
                                     <span class="menu-title fw-semibold">Feedback</span>
                                 </a>
                             </div>
+                            @endrole
 
+                            @role('admin')
                             <!-- Feedback Admin Section -->
                             <div class="menu-item">
                                 <a class="menu-link {{ request()->routeIs('feedback.index_admin') ? ' active' : '' }}"
@@ -130,7 +146,9 @@
                                     <span class="menu-title fw-semibold">Feedback</span>
                                 </a>
                             </div>
+                            @endrole
 
+                            @role('technician')
                             <!-- Feedback Technian Section -->
                             <div class="menu-item">
                                 <a class="menu-link {{ request()->routeIs('feedback.index_technian') ? ' active' : '' }}"
@@ -141,6 +159,7 @@
                                     <span class="menu-title fw-semibold">Feedback</span>
                                 </a>
                             </div>
+                            @endrole
 
                             <!-- User Account Section -->
                             <div class="menu-item pt-5">
@@ -148,9 +167,10 @@
                                     <span class="menu-heading fw-bold text-uppercase fs-7">User Account </span>
                                 </div>
                             </div>
+                            @role('student')
                             <div class="menu-item">
-                                <a class="menu-link {{ request()->routeIs('#') ? ' active' : '' }}"
-                                    href="#">
+                                <a class="menu-link {{ request()->routeIs('student.profile.edit') ? ' active' : '' }}"
+                                    href="{{route("student.profile.edit")}}">
                                     <span class="menu-icon">
                                         <i class="ki-duotone ki-profile-circle fs-2">
                                             <span class="path1"></span>
@@ -161,6 +181,22 @@
                                     <span class="menu-title fw-semibold">Profile</span>
                                 </a>
                             </div>
+                            @endrole
+                            @role('technician')
+                            <div class="menu-item">
+                                <a class="menu-link {{ request()->routeIs('technician.profile.edit') ? ' active' : '' }}"
+                                    href="{{route("technician.profile.edit")}}">
+                                    <span class="menu-icon">
+                                        <i class="ki-duotone ki-profile-circle fs-2">
+                                            <span class="path1"></span>
+                                            <span class="path2"></span>
+                                            <span class="path3"></span>
+                                        </i>
+                                    </span>
+                                    <span class="menu-title fw-semibold">Profile</span>
+                                </a>
+                            </div>
+                            @endrole
                         </div>
                   </div>
             </div>

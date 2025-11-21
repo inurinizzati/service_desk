@@ -70,7 +70,7 @@
             </div>
 
             <div class="card-footer text-end">
-                <a href="{{ route('ticket.list') }}" class="btn btn-sm btn-info fs-6">Back</a>
+                <a href="{{ route('complaint.ticket.list') }}" class="btn btn-sm btn-info fs-6">Back</a>
                  {{-- <a href="#"
                     class="btn btn-primary {{ $ticket->status != 'Completed' ? 'd-none' : '' }}">
                     Feedback
