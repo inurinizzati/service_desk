@@ -27,36 +27,32 @@ class RegisteredUserController extends Controller
      *
      * @throws \Illuminate\Validation\ValidationException
      */
-    public function store(Request $request): RedirectResponse
+        public function store(Request $request): RedirectResponse
     {
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
-            'student_id' => ['required', 'string', 'max:255', 'unique:users,student_id'], // Add this validation
+            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:users,email'],
+            'student_id' => ['required', 'string', 'max:255', 'unique:users,student_id'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
-        // Get the Student role
-        $studentRole = \App\Models\Role::where('slug', 'student')->first();
-        
-        if (!$studentRole) {
-            return back()->withErrors(['role' => 'Student role not found. Please contact administrator.']);
-        }
-
+        // Create user
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
-            'student_id' => $request->student_id, // Add this line
+            'student_id' => $request->student_id,
             'password' => Hash::make($request->password),
-            'role_id' => $studentRole->id, // Default to Student
-            'is_active' => true, // Default to Active
+            'is_active' => true,
         ]);
 
-        event(new Registered($user));
+
+        $user->addRole('student');
 
         event(new Registered($user));
 
         return redirect()->route('login')
             ->with('status', 'Account registered successfully. Please log in.');
     }
+
+
 }
