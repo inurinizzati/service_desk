@@ -50,7 +50,7 @@ function openAssignModal(ticketId, status) {
             <table class="m-datatable table align-middle table-row-dashed fs-6 gy-5">
                 <thead>
                     <tr class="text-start text-dark fw-bold fs-7 text-uppercase gs-0">
-                        <th>ID</th>
+                        <th>Ticket ID</th>
                         <th>Student ID</th>
                         <th>Title</th>
                         <th>Category</th>
@@ -65,7 +65,7 @@ function openAssignModal(ticketId, status) {
                     @foreach ($tickets as $ticket)
                         <tr>
                             <td>{{ $ticket->id }}</td>
-                            <td>{{ $ticket->student_id }}</td>
+                            <td>{{ $ticket->userid }}</td>
                             <td>
                                 <a href="{{ route('admin.ticket.details', $ticket->id) }}" class="fw-bold text-decoration-none text-dark">
                                     {{ $ticket->title }}
@@ -96,6 +96,8 @@ function openAssignModal(ticketId, status) {
                                     <span class="badge badge-light-success fs-6">Completed</span>
                                 @elseif ($ticket->status == 'Pending')
                                     <span class="badge badge-light-warning fs-6">Pending</span>
+                                @elseif ($ticket->status == 'Cancel')
+                                    <span class="badge badge-light-danger fs-6">Cancel</span>
                                 @else
                                     <span class="badge badge-light-secondary fs-6">Unknown</span>
                                 @endif

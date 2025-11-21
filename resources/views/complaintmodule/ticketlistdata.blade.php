@@ -52,7 +52,7 @@
             <table class="m-datatable table align-middle table-row-dashed fs-6 gy-5">
                 <thead>
                     <tr class="text-start text-dark fw-bold fs-7 text-uppercase gs-0">
-                        <th>ID</th>
+                        <th>Ticket ID</th>
                         <th>Title</th>
                         <th>Category</th>
                         <th>Malfunction Date</th>
@@ -86,22 +86,25 @@
                                 @endif
                             </td>
 
-                            <td class="text-start">
+                            <td style="vertical-align: middle; text-align:left;">
                                 @if ($ticket->status == 'Completed')
-                                    @if (isset($ticket->rating) && $ticket->rating > 0)
-                                        {{-- Already rated - show stars --}}
-                                        <span class="star-display">
+                                    @if (!empty($ticket->rating) && $ticket->rating > 0)
+                                        {{-- ⭐ Show stars when rating exists --}}
+                                        <div class="rating d-flex justify-content-left" style="gap:4px;">
                                             @for ($i = 1; $i <= 5; $i++)
-                                                @if ($i <= $ticket->rating)
-                                                    ⭐
-                                                @else
-                                                    ☆
-                                                @endif
+                                                <div class="rating-label {{ $i <= $ticket->rating ? 'checked' : '' }}">
+                                                    <i class="ki-duotone ki-star fs-2">
+                                                        <span class="path1"></span>
+                                                        <span class="path2"></span>
+                                                    </i>
+                                                </div>
                                             @endfor
-                                        </span>
+                                        </div>
                                     @else
-                                        {{-- Not yet rated - show link as button --}}
-                                        <a href="{{ route('feedback.create', $ticket->id) }}" class="btn btn-sm btn-info fs-6" onclick="event.stopPropagation();">
+                                        {{-- ❗ No rating yet → show Rate button --}}
+                                        <a href="{{ route('feedback.create', $ticket->id) }}"
+                                        class="btn btn-sm btn-info fs-6"
+                                        onclick="event.stopPropagation();">
                                             {{-- <i class="ki-duotone ki-star fs-4">
                                                 <span class="path1"></span>
                                                 <span class="path2"></span>
