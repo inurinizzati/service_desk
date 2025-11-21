@@ -72,11 +72,13 @@
             <table id="feedbackTable" class="m-datatable table align-middle table-row-dashed fs-6 gy-5">
                 <thead>
                     <tr class="text-dark fw-bold fs-7 text-uppercase gs-0">
-                        <th style="width:10%; text-align:left;">Ticket Num</th>
-                        <th style="width:20%; text-align:left;">Student Name</th>
+                        <th style="width:10%; text-align:left;">Ticket ID</th>
+                        <th style="width:10%; text-align:left;">Student ID</th>
+                        <th style="width:10%; text-align:left;">Student Name</th>
+                        <th style="width:15%; text-align:left;">Title</th>
                         <th style="width:20%; text-align:left;">Technician Name</th>
                         <th style="width:15%; text-align:leftcenter;">Rating</th>
-                        <th style="width:30%; text-align:left;">Comment</th>
+                        <th style="width:45%; text-align:left;">Comment</th>
                     </tr>
                 </thead>
 
@@ -89,7 +91,15 @@
                             </td>
 
                             <td style="vertical-align: middle; text-align:left;">
+                                {{ $feedbacks->userid }}
+                            </td>
+
+                            <td style="vertical-align: middle; text-align:left;">
                                 {{ $feedbacks->student_name }}
+                            </td>
+
+                            <td style="vertical-align: middle; text-align:left;">
+                                {{ $feedbacks->title }}
                             </td>
 
                             <td style="vertical-align: middle; text-align:left;">

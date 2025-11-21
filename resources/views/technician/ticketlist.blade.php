@@ -40,10 +40,11 @@
             <table class="m-datatable table align-middle table-row-dashed fs-6 gy-5">
                 <thead>
                     <tr class="text-start text-dark fw-bold fs-7 text-uppercase gs-0">
-                        <th>ID</th>
+                        <th>Ticket ID</th>
+                        <th>Student ID</th>
                         <th>Title</th>
                         <th>Category</th>
-                        <th>Date</th>
+                        <th>Malfunction Date</th>
                         <th>Resolved Date</th>
                         <th class="text-start">Status</th>
                         <th>Action</th>
@@ -53,6 +54,7 @@
                     @foreach ($tickets as $ticket)
                         <tr>
                             <td>{{ $ticket->id }}</td>
+                            <td>{{ $ticket->userid }}</td>
                             <td>
                                 <a href="{{ route('technician.ticket.details', $ticket->id) }}" class="fw-bold text-decoration-none text-dark">
                                     {{ $ticket->title }}
@@ -73,6 +75,8 @@
                                     <span class="badge badge-light-success fs-6">Completed</span>
                                 @elseif ($ticket->status == 'Pending')
                                     <span class="badge badge-light-warning fs-6">Pending</span>
+                                @elseif ($ticket->status == 'Cancel')
+                                    <span class="badge badge-light-danger fs-6">Cancel</span>
                                 @else
                                     <span class="badge badge-light-secondary fs-6">Unknown</span>
                                 @endif

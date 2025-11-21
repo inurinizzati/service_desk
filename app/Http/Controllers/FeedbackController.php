@@ -16,71 +16,23 @@ class FeedbackController extends Controller
     {
        $feedback = [
             (object)[
-                'ticket_id' => 'TK001',
-                'technician_name' => 'Ahmad Bin Norman',
-                'rating' => 4,
-                'comment' => 'Technician responds fast and friendly.'
-            ],
-            (object)[
-                'ticket_id' => 'TK002',
-                'technician_name' => 'Siti Anisah Binti Jamin',
-                'rating' => 5,
-                'comment' => 'Excellent service, very helpful!'
-            ],
-            (object)[
-                'ticket_id' => 'TK003',
-                'technician_name' => 'Muhammad Naufal Bin Nabil',
-                'rating' => 3,
-                'comment' => 'Service okay, but took some time.'
-            ],
-            (object)[
-                'ticket_id' => 'TK004',
-                'technician_name' => 'Nur Aina Binti Rahman',
-                'rating' => 5,
-                'comment' => 'Very professional and kind.'
-            ],
-            (object)[
-                'ticket_id' => 'TK005',
-                'technician_name' => 'Muhammad Izzat Bin Razlan',
-                'rating' => 2,
-                'comment' => 'Slow response but problem resolved.'
-            ],
-            (object)[
-                'ticket_id' => 'TK006',
-                'technician_name' => 'Farah Nadhirah Binti Kamarul',
-                'rating' => 4,
-                'comment' => 'Good service overall.'
-            ],
-            (object)[
-                'ticket_id' => 'TK007',
-                'technician_name' => 'Syafiq Hakim Bin Razali',
-                'rating' => 5,
-                'comment' => 'Fast and efficient, highly recommended!'
-            ],
-            (object)[
-                'ticket_id' => 'TK008',
-                'technician_name' => 'Aishah Binti Azmi',
-                'rating' => 3,
-                'comment' => 'Average service, can be improved.'
-            ],
-            (object)[
-                'ticket_id' => 'TK009',
-                'technician_name' => 'Izwan Firdaus Bin Omar',
-                'rating' => 4,
-                'comment' => 'Friendly technician and quick fix.'
-            ],
-            (object)[
-                'ticket_id' => 'TK010',
-                'technician_name' => 'Nurin Syafika Binti Salleh',
-                'rating' => 5,
-                'comment' => 'Excellent work and clear communication!'
-            ],
-            (object)[
-                'ticket_id' => 'TK011',
-                'technician_name' => 'Faizal Bin Rosli',
-                'rating' => 1,
-                'comment' => 'Issue not fully resolved, need follow-up.'
-            ],
+                    'ticket_id' => 'TK000001',
+                    'userid' => 'STUD000001',
+                    'student_name' => 'Siti Nawwarah',
+                    'title' => 'Fan Not Working',
+                    'technician_name' => 'Ahmad Bin Norman',
+                    'rating' => 4,
+                    'comment' => 'Technician repaired the fan quickly and efficiently.'
+                ],
+                (object)[
+                    'ticket_id' => 'TK000002',
+                    'userid' => 'STUD000001',
+                    'student_name' => 'Siti Nawwarah',
+                    'title' => 'Light Flickering',
+                    'technician_name' => 'Ahmad Bin Norman',
+                    'rating' => 5,
+                    'comment' => 'Fast response, light issue fixed perfectly.'
+                ],
         ];
 
 
@@ -95,83 +47,169 @@ class FeedbackController extends Controller
     public function index_admin()
     {
         $feedback = [
-            (object)[
-                'ticket_id' => 'TK001',
-                'student_name' => "Siti Nawwarah",
-                'technician_name' => 'Ahmad Bin Norman',
-                'rating' => 4,
-                'comment' => 'Technician responds fast and friendly.'
-            ],
-            (object)[
-                'ticket_id' => 'TK002',
-                'student_name' => "Muhammad Danish Hakim",
-                'technician_name' => 'Siti Anisah Binti Jamin',
-                'rating' => 5,
-                'comment' => 'Excellent service, very helpful!'
-            ],
-            (object)[
-                'ticket_id' => 'TK003',
-                'student_name' => "Nur Aina Sofea",
-                'technician_name' => 'Muhammad Naufal Bin Nabil',
-                'rating' => 3,
-                'comment' => 'Service okay, but took some time.'
-            ],
-            (object)[
-                'ticket_id' => 'TK004',
-                'student_name' => "Aiman Faiz Bin Kamarul",
-                'technician_name' => 'Nur Aina Binti Rahman',
-                'rating' => 5,
-                'comment' => 'Very professional and kind.'
-            ],
-            (object)[
-                'ticket_id' => 'TK005',
-                'student_name' => "Haziq Firdaus",
-                'technician_name' => 'Muhammad Izzat Bin Razlan',
-                'rating' => 2,
-                'comment' => 'Slow response but problem resolved.'
-            ],
-            (object)[
-                'ticket_id' => 'TK006',
-                'student_name' => "Nurin Balqis",
-                'technician_name' => 'Farah Nadhirah Binti Kamarul',
-                'rating' => 4,
-                'comment' => 'Good service overall.'
-            ],
-            (object)[
-                'ticket_id' => 'TK007',
-                'student_name' => "Afiq Haziq Bin Hanafi",
-                'technician_name' => 'Syafiq Hakim Bin Razali',
-                'rating' => 5,
-                'comment' => 'Fast and efficient, highly recommended!'
-            ],
-            (object)[
-                'ticket_id' => 'TK008',
-                'student_name' => "Siti Balqis Binti Adnan",
-                'technician_name' => 'Aishah Binti Azmi',
-                'rating' => 3,
-                'comment' => 'Average service, can be improved.'
-            ],
-            (object)[
-                'ticket_id' => 'TK009',
-                'student_name' => "Muhammad Aidil",
-                'technician_name' => 'Izwan Firdaus Bin Omar',
-                'rating' => 4,
-                'comment' => 'Friendly technician and quick fix.'
-            ],
-            (object)[
-                'ticket_id' => 'TK010',
-                'student_name' => "Yasmin Zahra",
-                'technician_name' => 'Nurin Syafika Binti Salleh',
-                'rating' => 5,
-                'comment' => 'Excellent work and clear communication!'
-            ],
-            (object)[
-                'ticket_id' => 'TK011',
-                'student_name' => "Adam Zafran",
-                'technician_name' => 'Faizal Bin Rosli',
-                'rating' => 1,
-                'comment' => 'Issue not fully resolved, need follow-up.'
-            ],
+                (object)[
+                    'ticket_id' => 'TK000001',
+                    'userid' => 'STUD000001',
+                    'student_name' => 'Siti Nawwarah',
+                    'title' => 'Fan Not Working',
+                    'technician_name' => 'Ahmad Bin Norman',
+                    'rating' => 4,
+                    'comment' => 'Technician repaired the fan quickly and efficiently.'
+                ],
+                (object)[
+                    'ticket_id' => 'TK000002',
+                    'userid' => 'STUD000001',
+                    'student_name' => 'Siti Nawwarah',
+                    'title' => 'Light Flickering',
+                    'technician_name' => 'Ahmad Bin Norman',
+                    'rating' => 5,
+                    'comment' => 'Fast response, light issue fixed perfectly.'
+                ],
+                (object)[
+                    'ticket_id' => 'TK000004',
+                    'userid' => 'STUD000003',
+                    'student_name' => 'Asilah Zarifah',
+                    'title' => 'Dirty Pantry Area',
+                    'technician_name' => 'Siti Nur Izzah binti Abdul Rahman',
+                    'rating' => 5,
+                    'comment' => 'Very clean work and friendly attitude.'
+                ],
+                (object)[
+                    'ticket_id' => 'TK000006',
+                    'userid' => 'STUD000004',
+                    'student_name' => 'Nurin Balqis',
+                    'title' => 'Broken Study Table',
+                    'technician_name' => 'Syafiq Hakim Bin Razali',
+                    'rating' => 2,
+                    'comment' => 'Table not fixed properly.'
+                ],
+                (object)[
+                    'ticket_id' => 'TK000009',
+                    'userid' => 'STUD000006',
+                    'student_name' => 'Aishah Binti Azmi',
+                    'title' => 'Dusty Corridor',
+                    'student_name' => 'Aishah Binti Azmi',
+                    'technician_name' => 'Siti Nur Izzah binti Abdul Rahman',
+                    'rating' => 3,
+                    'comment' => 'Corridor not really cleaned'
+                ],
+                (object)[
+            'ticket_id' => 'TK000010',
+            'userid' => 'STUD000002',
+            'student_name' => 'Aminah Farhana',
+            'title' => 'Air Conditioner Leaking',
+            'technician_name' => 'Syafiq Hakim Bin Razali',
+            'rating' => 4,
+            'comment' => 'Leak fixed properly and fast.'
+        ],
+        (object)[
+            'ticket_id' => 'TK000012',
+            'userid' => 'STUD000004',
+            'student_name' => 'Nurin Balqis',
+            'title' => 'Intermittent Wi-Fi Drop',
+            'technician_name' => 'Izwan Firdaus Bin Omar',
+            'rating' => 3,
+            'comment' => 'Improved but still occasionally drops.'
+        ],
+        (object)[
+            'ticket_id' => 'TK000013',
+            'userid' => 'STUD000008',
+            'student_name' => 'Hani Sofea',
+            'title' => 'Unclean Washroom',
+            'technician_name' => 'Nurin Farah Izzati binti Rusdi',
+            'rating' => 5,
+            'comment' => 'Very clean and hygienic afterward.'
+        ],
+        (object)[
+            'ticket_id' => 'TK000015',
+            'userid' => 'STUD000001',
+            'student_name' => 'Aminah Farhana',
+            'title' => 'Broken Door Lock',
+            'technician_name' => 'Syafiq Hakim Bin Razali',
+            'rating' => 4,
+            'comment' => 'Door fixed and now secure.'
+        ],
+        (object)[
+            'ticket_id' => 'TK000017',
+            'userid' => 'STUD000007',
+            'student_name' => 'Pei Wei',
+            'title' => 'No Water Supply',
+            'technician_name' => 'Nurin Farah Izzati binti Rusdi',
+            'rating' => 5,
+            'comment' => 'Resolved instantly, great work!'
+        ],
+        (object)[
+            'ticket_id' => 'TK000018',
+            'userid' => 'STUD000003',
+            'student_name' => 'Asilah Zarifah',
+            'title' => 'Dirty Laundry Area',
+            'technician_name' => 'Nurin Farah Izzati binti Rusdi',
+            'rating' => 5,
+            'comment' => 'Area looks very clean now.'
+        ],
+        (object)[
+            'ticket_id' => 'TK000020',
+            'userid' => 'STUD000002',
+            'student_name' => 'Aminah Farhana',
+            'title' => 'Broken Chair',
+            'technician_name' => 'Ahmad Bin Norman',
+            'rating' => 3,
+            'comment' => 'Chair fixed but still slightly shaky.'
+        ],
+        (object)[
+            'ticket_id' => 'TK000021',
+            'userid' => 'STUD000004',
+            'student_name' => 'Nurin Balqis',
+            'title' => 'Light Buzzing Noise',
+            'technician_name' => 'Ahmad Bin Norman',
+            'rating' => 4,
+            'comment' => 'Buzzing noise gone.'
+        ],
+        (object)[
+            'ticket_id' => 'TK000023',
+            'userid' => 'STUD000008',
+            'student_name' => 'Hani Sofea',
+            'title' => 'Wet Corridor',
+            'technician_name' => 'Nurin Farah Izzati binti Rusdi',
+            'rating' => 5,
+            'comment' => 'Corridor dried and cleaned well.'
+        ],
+        (object)[
+            'ticket_id' => 'TK000025',
+            'userid' => 'STUD000006',
+            'student_name' => 'Aishah Binti Azmi',
+            'title' => 'Dusty Cupboard',
+            'technician_name' => 'Nurin Farah Izzati binti Rusdi',
+            'rating' => 3,
+            'comment' => 'Still a bit dusty but acceptable.'
+        ],
+        (object)[
+            'ticket_id' => 'TK000026',
+            'userid' => 'STUD000003',
+            'student_name' => 'Asilah Zarifah',
+            'title' => 'Loose Water Tap',
+            'technician_name' => 'Siti Nur Izzah binti Abdul Rahman',
+            'rating' => 4,
+            'comment' => 'Tap now stable.'
+        ],
+        (object)[
+            'ticket_id' => 'TK000028',
+            'userid' => 'STUD000007',
+            'student_name' => 'Pei Wei',
+            'title' => 'Light Switch Hot',
+            'technician_name' => 'Izwan Firdaus Bin Omar',
+            'rating' => 5,
+            'comment' => 'Switch replaced safely.'
+        ],
+        (object)[
+            'ticket_id' => 'TK000029',
+            'userid' => 'STUD000010',
+            'student_name' => 'Nur Izzati',
+            'title' => 'Dirty Pantry Sink',
+            'technician_name' => 'Nurin Farah Izzati binti Rusdi',
+            'rating' => 4,
+            'comment' => 'Cleaned thoroughly.'
+        ],
         ];
 
 
@@ -185,71 +223,41 @@ class FeedbackController extends Controller
     {
         $feedback = [
             (object)[
-                'ticket_id' => 'TK001',
-                'student_name' => "Siti Nawwarah",
-                'rating' => 4,
-                'comment' => 'Technician responds fast and friendly.'
-            ],
-            (object)[
-                'ticket_id' => 'TK002',
-                'student_name' => "Muhammad Danish Hakim",
-                'rating' => 5,
-                'comment' => 'Excellent service, very helpful!'
-            ],
-            (object)[
-                'ticket_id' => 'TK003',
-                'student_name' => "Nur Aina Sofea",
-                'rating' => 3,
-                'comment' => 'Service okay, but took some time.'
-            ],
-            (object)[
-                'ticket_id' => 'TK004',
-                'student_name' => "Aiman Faiz Bin Kamarul",
-                'rating' => 5,
-                'comment' => 'Very professional and kind.'
-            ],
-            (object)[
-                'ticket_id' => 'TK005',
-                'student_name' => "Haziq Firdaus",
-                'rating' => 2,
-                'comment' => 'Slow response but problem resolved.'
-            ],
-            (object)[
-                'ticket_id' => 'TK006',
-                'student_name' => "Nurin Balqis",
-                'rating' => 4,
-                'comment' => 'Good service overall.'
-            ],
-            (object)[
-                'ticket_id' => 'TK007',
-                'student_name' => "Afiq Haziq Bin Hanafi",
-                'rating' => 5,
-                'comment' => 'Fast and efficient, highly recommended!'
-            ],
-            (object)[
-                'ticket_id' => 'TK008',
-                'student_name' => "Siti Balqis Binti Adnan",
-                'rating' => 3,
-                'comment' => 'Average service, can be improved.'
-            ],
-            (object)[
-                'ticket_id' => 'TK009',
-                'student_name' => "Muhammad Aidil",
-                'rating' => 4,
-                'comment' => 'Friendly technician and quick fix.'
-            ],
-            (object)[
-                'ticket_id' => 'TK010',
-                'student_name' => "Yasmin Zahra",
-                'rating' => 5,
-                'comment' => 'Excellent work and clear communication!'
-            ],
-            (object)[
-                'ticket_id' => 'TK011',
-                'student_name' => "Adam Zafran",
-                'rating' => 1,
-                'comment' => 'Issue not fully resolved, need follow-up.'
-            ],
+                    'ticket_id' => 'TK000001',
+                    'userid' => 'STUD000001',
+                    'student_name' => 'Siti Nawwarah',
+                    'title' => 'Fan Not Working',
+                    'technician_name' => 'Ahmad Bin Norman',
+                    'rating' => 4,
+                    'comment' => 'Technician repaired the fan quickly and efficiently.'
+                ],
+                (object)[
+                    'ticket_id' => 'TK000002',
+                    'userid' => 'STUD000001',
+                    'student_name' => 'Siti Nawwarah',
+                    'title' => 'Light Flickering',
+                    'technician_name' => 'Ahmad Bin Norman',
+                    'rating' => 5,
+                    'comment' => 'Fast response, light issue fixed perfectly.'
+                ],
+                (object)[
+                    'ticket_id' => 'TK000020',
+                    'userid' => 'STUD000002',
+                    'student_name' => 'Aminah Farhana',
+                    'title' => 'Broken Chair',
+                    'technician_name' => 'Ahmad Bin Norman',
+                    'rating' => 3,
+                    'comment' => 'Chair fixed but still slightly shaky.'
+                ],
+                (object)[
+                    'ticket_id' => 'TK000021',
+                    'userid' => 'STUD000004',
+                    'student_name' => 'Aminah Farhana',
+                    'title' => 'Light Buzzing Noise',
+                    'technician_name' => 'Ahmad Bin Norman',
+                    'rating' => 5,
+                    'comment' => 'Fast response, light issue fixed perfectly.'
+                ],
         ];
 
 

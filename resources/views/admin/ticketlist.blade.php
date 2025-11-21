@@ -12,13 +12,49 @@
 <script src="{{ asset('metronic/js/datatable.js')}}"></script>
 
 <script>
-function openAssignModal(ticketId, status) {
+// Store all technicians data with their categories
+const allTechnicians = {!! json_encode($technicians) !!};
+
+function openAssignModal(ticketId, status, category) {
     if(status !== 'Pending') return; // Only allow if pending
+
+    console.log('Ticket Category:', category);
+    console.log('All Technicians:', allTechnicians);
+
     document.getElementById('assignTicketId').value = ticketId;
+
+    // Filter technicians by category
+    const technicianSelect = document.getElementById('technician');
+    technicianSelect.innerHTML = ''; // Clear existing options
+
+    const matchingTechnicians = allTechnicians.filter(tech => {
+        console.log('Checking tech:', tech.name, 'Category:', tech.category);
+        return tech.categories.includes(category);
+    });
+
+    console.log('Matching Technicians:', matchingTechnicians);
+
+    if(matchingTechnicians.length === 0) {
+        technicianSelect.innerHTML =
+            '<option value="">No technician available for this category</option>';
+        const submitBtn = document.querySelector('#assignModal button[type="submit"]');
+        if(submitBtn) submitBtn.disabled = true;
+    } else {
+        matchingTechnicians.forEach(tech => {
+            const option = document.createElement('option');
+            option.value = tech.id;
+            option.textContent = tech.name; // 🔥 FIXED: No more category shown
+            technicianSelect.appendChild(option);
+        });
+        const submitBtn = document.querySelector('#assignModal button[type="submit"]');
+        if(submitBtn) submitBtn.disabled = false;
+    }
+
     var modal = new bootstrap.Modal(document.getElementById('assignModal'));
     modal.show();
 }
 </script>
+
 @endsection
 
 @section('content')
@@ -50,11 +86,11 @@ function openAssignModal(ticketId, status) {
             <table class="m-datatable table align-middle table-row-dashed fs-6 gy-5">
                 <thead>
                     <tr class="text-start text-dark fw-bold fs-7 text-uppercase gs-0">
-                        <th>ID</th>
+                        <th>Ticket ID</th>
                         <th>Student ID</th>
                         <th>Title</th>
                         <th>Category</th>
-                        <th>Technician</th> <!-- New Column -->
+                        <th>Technician</th>
                         <th>Date</th>
                         <th>Resolved Date</th>
                         <th class="text-start">Status</th>
@@ -65,7 +101,7 @@ function openAssignModal(ticketId, status) {
                     @foreach ($tickets as $ticket)
                         <tr>
                             <td>{{ $ticket->id }}</td>
-                            <td>{{ $ticket->student_id }}</td>
+                            <td>{{ $ticket->userid ?? $ticket->student_id }}</td>
                             <td>
                                 <a href="{{ route('admin.ticket.details', $ticket->id) }}" class="fw-bold text-decoration-none text-dark">
                                     {{ $ticket->title }}
@@ -96,6 +132,8 @@ function openAssignModal(ticketId, status) {
                                     <span class="badge badge-light-success fs-6">Completed</span>
                                 @elseif ($ticket->status == 'Pending')
                                     <span class="badge badge-light-warning fs-6">Pending</span>
+                                @elseif ($ticket->status == 'Cancel')
+                                    <span class="badge badge-light-danger fs-6">Cancel</span>
                                 @else
                                     <span class="badge badge-light-secondary fs-6">Unknown</span>
                                 @endif
@@ -103,7 +141,7 @@ function openAssignModal(ticketId, status) {
                             <td class="text-start">
                                 <button
                                     class="btn btn-sm btn-info fs-6 {{ $ticket->status != 'Pending' ? 'disabled' : '' }}"
-                                    onclick="openAssignModal('{{ $ticket->id }}','{{ $ticket->status }}');">
+                                    onclick="openAssignModal('{{ $ticket->id }}','{{ $ticket->status }}','{{ $ticket->category }}');">
                                     Assign
                                 </button>
                             </td>
@@ -129,9 +167,7 @@ function openAssignModal(ticketId, status) {
                 <div class="modal-body">
                     <label for="technician">Choose Technician</label>
                     <select name="technician_id" id="technician" class="form-select" required>
-                        @foreach ($technicians as $tech)
-                            <option value="{{ $tech->id }}">{{ $tech->name }}</option>
-                        @endforeach
+                        <!-- Options will be populated dynamically by JavaScript -->
                     </select>
                 </div>
                 <div class="modal-footer">

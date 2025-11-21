@@ -115,7 +115,7 @@
                 </div>
 
                 <div class="text-end">
-                    <button type="submit" class="btn btn-primary">
+                    <button type="submit" class="btn btn-info">
                         <i class="ki-duotone ki-check fs-2"></i>
                         Update User
                     </button>

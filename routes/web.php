@@ -107,7 +107,7 @@ Route::get('/', function () {
 // });
 
 
-Route::redirect('/', '/dashboard');
+// Route::redirect('/', '/dashboard');
 
 // Route::get('/dashboard', function () {
 //     return view('dashboard');

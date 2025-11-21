@@ -12,6 +12,16 @@
 
         <div class="card-body">
             <div class="mb-4">
+                <h6 class="fw-semibold text-muted mb-1">Ticket ID</h6>
+                <p class="fs-6 mb-0">{{ $ticket->id }}</p>
+            </div>
+
+            <div class="mb-4">
+                <h6 class="fw-semibold text-muted mb-1">Student ID</h6>
+                <p class="fs-6 mb-0">{{ $ticket->userid }}</p>
+            </div>
+
+            <div class="mb-4">
                 <h6 class="fw-semibold text-muted mb-1">Title</h6>
                 <p class="fs-6 mb-0">{{ $ticket->title }}</p>
             </div>
