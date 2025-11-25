@@ -126,7 +126,7 @@ class TechnicianTicketController extends Controller
                 'title' => 'Broken Chair in Room',
                 'category' => 'Room Facilities',
                 'description' => 'The chair in my room is unstable and could be dangerous to sit on.',
-                'location' => 'Room M04 Saujana 04-28B',
+                'location' => 'M04 Saujana 04-28B',
                 'date' => '14/02/2025',
                 'status' => 'Pending',
                 'resolved_date' => null,],
