@@ -124,6 +124,19 @@ Website: https://service_desk.com
         html[data-bs-theme="dark"] #kt_header .text-dark {
             color: #ffffff !important;
         }
+        .page {
+            min-height: 100vh !important;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .wrapper {
+            flex: 1 0 auto;
+        }
+
+        footer, .footer {
+            flex-shrink: 0;
+        }
 
 
 
