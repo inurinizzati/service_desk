@@ -179,7 +179,7 @@
 
                     <!-- Students Card -->
                     <div class="col-md-6 col-xl-6">
-                        <a href="#" class="card bg-primary hoverable card-xl-stretch h-100">
+                        <a href="{{ route('admin.userlist', ['role' => 'student']) }}" class="card bg-primary hoverable card-xl-stretch h-100">
                             <div class="card-body">
                                 <!-- YOUR CUSTOM LAYOUT: Stack on mobile (flex-column), Row on Desktop (flex-md-row) -->
                                 <div class="d-flex stat-row justify-content-between align-items-center mb-2 mt-5 flex-column flex-md-row">
@@ -200,7 +200,7 @@
 
                     <!-- Technicians Card -->
                     <div class="col-md-6 col-xl-6">
-                        <a href="#" class="card bg-dark hoverable card-xl-stretch h-100">
+                        <a href="{{ route('admin.userlist', ['role' => 'technician']) }}" class="card bg-dark hoverable card-xl-stretch h-100">
                             <div class="card-body">
                                 <!-- YOUR CUSTOM LAYOUT -->
                                 <div class="d-flex stat-row justify-content-between align-items-center mb-2 mt-5 flex-column flex-md-row">

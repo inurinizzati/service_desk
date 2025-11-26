@@ -33,6 +33,16 @@ class FeedbackController extends Controller
                     'rating' => 5,
                     'comment' => 'Fast response, light issue fixed perfectly.'
                 ],
+                (object)[
+                    'ticket_id' => 'TK000030',
+                    'userid' => 'STUD000001',
+                    'student_name' => 'Siti Nawwarah',
+                    'title' => 'Broken Chair in Room',
+                    'technician_name' => 'Ahmad Bin Norman',
+                    //nanti nawa tukar sini for student feedback and rate
+                    'rating' => 5,
+                    'comment' => ' ',
+            ],
         ];
 
 
@@ -201,6 +211,14 @@ class FeedbackController extends Controller
             'rating' => 4,
             'comment' => 'Cleaned thoroughly.'
         ],
+        (object)[
+                    'ticket_id' => 'TK000030',
+                    'userid' => 'STUD000001',
+                    'student_name' => 'Siti Nawwarah',
+                    'title' => 'Broken Chair in Room',
+                    'technician_name' => 'Ahmad Bin Norman',
+                    //nanti nawa tukar sini for student feedback and rate
+            ],
         ];
 
 
@@ -248,6 +266,16 @@ class FeedbackController extends Controller
                     'technician_name' => 'Ahmad Bin Norman',
                     'rating' => 5,
                     'comment' => 'Fast response, light issue fixed perfectly.'
+                ],
+                (object)[
+                    'ticket_id' => 'TK000030',
+                    'userid' => 'STUD000001',
+                    'student_name' => 'Siti Nawwarah',
+                    'title' => 'Broken Chair in Room',
+                    'technician_name' => 'Ahmad Bin Norman',
+                    //nanti nawa tukar sini for student feedback and rate
+                    'rating' => 5,
+                    'comment' => ' '
                 ],
         ];
 

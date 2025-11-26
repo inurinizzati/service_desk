@@ -2,11 +2,22 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
+use App\Models\User;
 
 class DashboardController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
+        // direct DB counts using role relation (Laratrust or your roles relation)
+        $totalStudents = User::whereHas('roles', function ($q) {
+            $q->where('name', 'student');
+        })->count();
+
+        $totalTechnicians = User::whereHas('roles', function ($q) {
+            $q->where('name', 'technician');
+        })->count();
+
         // Dummy data for chart
         $complaintData = [
             ['category' => 'Completed', 'value' => 18],
@@ -22,7 +33,7 @@ class DashboardController extends Controller
             ['rating' => '5 Stars', 'count' => 7],
         ];
 
-        return view('dashboard.index', compact('complaintData', 'feedbackData'));
+        return view('dashboard.index', compact('totalStudents', 'totalTechnicians', 'complaintData', 'feedbackData'));
     }
 
     public function student()

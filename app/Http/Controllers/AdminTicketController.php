@@ -354,6 +354,17 @@ class AdminTicketController extends Controller
                 'status' => 'Completed',
                 'resolved_date' => '11/03/2025',
             ],
+            (object)[
+                'id' => 'TK000030',
+                'userid' => 'STUD000001',
+                'title' => 'Broken Chair in Room',
+                'category' => 'Room Facilities',
+                'description' => 'The chair in my room is unstable and could be dangerous to sit on.',
+                'location' => 'M04 Saujana 04-28B',
+                'date' => '14/02/2025',
+                'status' => 'Pending',
+                'resolved_date' => null,
+            ],
         ];
 
        $technicians = [
@@ -697,6 +708,17 @@ class AdminTicketController extends Controller
                 'date' => '10/03/2025',
                 'status' => 'Completed',
                 'resolved_date' => '11/03/2025',
+            ],
+            (object)[
+                'id' => 'TK000030',
+                'userid' => 'STUD000001',
+                'title' => 'Broken Chair in Room',
+                'category' => 'Room Facilities',
+                'description' => 'The chair in my room is unstable and could be dangerous to sit on.',
+                'location' => 'M04 Saujana 04-28B',
+                'date' => '14/02/2025',
+                'status' => 'Pending',
+                'resolved_date' => null,
             ],
 
         ];
