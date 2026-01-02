@@ -41,7 +41,7 @@ class FeedbackController extends Controller
                     'technician_name' => 'Ahmad Bin Norman',
                     //nanti nawa tukar sini for student feedback and rate
                     'rating' => 5,
-                    'comment' => ' ',
+                    'comment' => 'Fast Services'
             ],
         ];
 
@@ -217,6 +217,8 @@ class FeedbackController extends Controller
                     'student_name' => 'Siti Nawwarah',
                     'title' => 'Broken Chair in Room',
                     'technician_name' => 'Ahmad Bin Norman',
+                    'rating' => 5,
+                    'comment' => 'Fast Services'
                     //nanti nawa tukar sini for student feedback and rate
             ],
         ];
@@ -275,7 +277,7 @@ class FeedbackController extends Controller
                     'technician_name' => 'Ahmad Bin Norman',
                     //nanti nawa tukar sini for student feedback and rate
                     'rating' => 5,
-                    'comment' => ' '
+                    'comment' => 'Fast Services'
                 ],
         ];
 

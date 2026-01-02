@@ -717,7 +717,7 @@ class AdminTicketController extends Controller
                 'description' => 'The chair in my room is unstable and could be dangerous to sit on.',
                 'location' => 'M04 Saujana 04-28B',
                 'date' => '14/02/2025',
-                'status' => 'Pending',
+                'status' => 'Completed',
                 'resolved_date' => null,
             ],
 

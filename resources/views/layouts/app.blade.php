@@ -124,20 +124,21 @@ Website: https://service_desk.com
         html[data-bs-theme="dark"] #kt_header .text-dark {
             color: #ffffff !important;
         }
-        .page {
-            min-height: 100vh !important;
-            display: flex;
-            flex-direction: column;
+
+        #kt_wrapper {
+            min-height: 100vh;
         }
 
-        .wrapper {
+        /* Force the content area to grow and push the footer down */
+        #kt_content {
             flex: 1 0 auto;
         }
 
-        footer, .footer {
+        /* Prevent the footer from shrinking */
+        #kt_footer {
             flex-shrink: 0;
+            margin-top: auto; /* Pushes footer to bottom if content is short */
         }
-
 
 
     </style>
@@ -281,7 +282,7 @@ Website: https://service_desk.com
                             @yield('content')
 						</div>
 					</div>
-                    <div class="footer py-4 d-flex flex-lg-column" id="kt_footer">
+                    <div class="footer py-4 d-flex flex-lg-column  mt-auto" id="kt_footer">
 						<div class="container-fluid d-flex flex-column flex-md-row align-items-center justify-content-between">
 							<div class="text-dark order-2 order-md-1">
 								Service Desk

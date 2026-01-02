@@ -77,8 +77,11 @@ class TicketController extends Controller
                 'description' => 'The chair in my room is unstable and could be dangerous to sit on.',
                 'location' => 'M04 Saujana 04-28B',
                 'date' => '14/02/2025',
-                'status' => 'Pending',
-                'resolved_date' => null,]
+                'status' => 'Completed',
+                'resolved_date' => '17/02/2025',
+                'rating' => 5
+
+                ]
         ];
 
         // Send this data to your Blade file
