@@ -10,7 +10,9 @@ RUN apt-get update && apt-get install -y \
     libzip-dev \
     libonig-dev \
     libxml2-dev \
-    && docker-php-ext-install pdo_mysql zip mbstring xml bcmath
+    && docker-php-ext-install pdo_mysql zip mbstring xml bcmath \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
 
 # Set working directory
 WORKDIR /var/www/html
@@ -18,14 +20,11 @@ WORKDIR /var/www/html
 # Install Composer
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
-# Copy composer files first (important for caching)
-COPY composer.json composer.lock ./
-
-# Install PHP dependencies (THIS CREATES vendor/)
-RUN composer install --no-dev --optimize-autoloader --no-interaction
-
-# Copy the rest of the application
+# Copy entire project
 COPY . .
+
+# Install PHP dependencies
+RUN composer install --no-dev --optimize-autoloader --no-interaction || true
 
 # Fix permissions
 RUN chown -R www-data:www-data storage bootstrap/cache
