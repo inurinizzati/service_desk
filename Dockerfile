@@ -1,16 +1,15 @@
-FROM php:8.2-apache
+# Base image
+FROM php:8.2-fpm
 
-# Force disable all MPMs, enable prefork & rewrite
-RUN rm -f /etc/apache2/mods-enabled/mpm_*.load \
-    && a2enmod mpm_prefork \
-    && a2enmod rewrite
-
-WORKDIR /var/www/html
-
-RUN apt-get update && apt-get install -y libzip-dev unzip git curl \
+# Install system dependencies and extensions
+RUN apt-get update && apt-get install -y \
+    nginx git unzip libzip-dev curl \
     && docker-php-ext-install pdo pdo_mysql zip
 
-# Copy composer files first
+# Set working directory
+WORKDIR /var/www/html
+
+# Copy composer files for caching
 COPY composer.json composer.lock ./
 
 # Install Composer
@@ -18,15 +17,20 @@ RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \
     && php composer-setup.php --install-dir=/usr/local/bin --filename=composer \
     && rm composer-setup.php
 
-# Copy full Laravel app
+# Copy Laravel app
 COPY . .
 
 # Install Laravel dependencies
 RUN composer install --no-dev --optimize-autoloader
 
-# Set permissions
+# Set permissions for Laravel storage/cache
 RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
 
+# Copy Nginx configuration
+COPY ./docker/nginx/default.conf /etc/nginx/conf.d/default.conf
+
+# Expose port 80
 EXPOSE 80
 
-CMD ["apache2-foreground"]
+# Start PHP-FPM and Nginx
+CMD ["sh", "-c", "php-fpm & nginx -g 'daemon off;'"]
